@@ -1,0 +1,47 @@
+# OS 
+.DS_Store
+Thumbs.db
+
+# IDE
+.vs/
+.vscode/
+*.suo
+*.user
+*.userprefs
+
+# Build Artifacts at root
+/build/
+dist/
+
+# Unity/FITARNA/
+
+# Unity Generate
+Unity/FITARNA/[Ll]ibrary/
+Unity/FITARNA/[Tt]emp/
+Unity/FITARNA/[Oo]bj/
+Unity/FITARNA/[Bb]uild/
+Unity/FITARNA/[Bb]uilds/
+Unity/FITARNA/[Ll]ogs/
+Unity/FITARNA/[Mm]emoryCaptures/
+Unity/FITARNA/UserSettings/
+Unity/FITARNA/[Aa]rtifacts/
+
+# Addressables / bundles
+Unity/FITARNA/*.aa
+Unity/FITARNA/*.bundle
+
+# Pachage cache
+Unity/FITARNA/Packages/PackageCache/
+
+# Crash / profiler
+Unity/FITARNA/*.stacktrace
+Unity/FITARNA/*.pid
+Unity/FITARNA/*.profiler
+Unity/FITARNA/*.perf
+
+#Rider / VS project Files
+Unity/FITARNA/*.csproj
+Unity/FITARNA/*.sln
+Unity/FITARNA/*.svd
+Unity/FITARNA/*.pidb
+Unity/FITARNA/*.booproj
