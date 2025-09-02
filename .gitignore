@@ -13,8 +13,11 @@ Thumbs.db
 /build/
 dist/
 
-# Unity/FITARNA/
+# Website
+Website/node_modules
+Website/dist
 
+# Unity/FITARNA/
 # Unity Generate
 Unity/FITARNA/[Ll]ibrary/
 Unity/FITARNA/[Tt]emp/
@@ -45,3 +48,4 @@ Unity/FITARNA/*.sln
 Unity/FITARNA/*.svd
 Unity/FITARNA/*.pidb
 Unity/FITARNA/*.booproj
+

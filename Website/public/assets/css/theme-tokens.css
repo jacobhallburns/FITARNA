@@ -1,0 +1,24 @@
+:root{
+  --bg:#FDFCF9;
+  --surface:#ffffff;
+  --text:#1A1A1A;
+  --muted:#5c5c5c;
+  --primary:#660000;
+  --accent:#C5B783;
+  --ring:rgba(197,183,131,.35);
+  --border:#e5e2da;
+  --shadow:0 10px 30px rgba(102,0,0,.18);
+}
+
+/* Apply by adding class="dark" to <html> */
+html.dark {
+  --bg:#111112;
+  --surface:#171718;
+  --text:#ECECEC;
+  --muted:#A1A1A1;
+  --primary:#C46A6A;
+  --accent:#D7C99A;
+  --ring:rgba(255,201,154,.35);
+  --border:#2a2a2b;
+  --shadow:0 10px 30px rgba(0,0,0,.45);
+}

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title><!-- Page Title --></title>
+  <meta name="description" content="<!-- Optional: short page description -->" />
+
+  <!-- Prevent theme flash + default first visit to LIGHT -->
+  <script>
+  (function () {
+    var t = localStorage.getItem('site-theme');
+    if (t !== 'light' && t !== 'dark') { t = 'light'; try { localStorage.setItem('site-theme', t); } catch {} }
+    if (t === 'dark') document.documentElement.classList.add('dark');
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+  </script>
+
+  <!-- Styles: tokens FIRST, then base (consumes tokens), then navbar, then page-specific -->
+  <link rel="stylesheet" href="/assets/css/theme-tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/navbar.css">
+  <!-- Optional: your page CSS -->
+  <!-- <link rel="stylesheet" href="/assets/css/page-xyz.css"> -->
+
+  <!-- Favicons (optional) -->
+  <!-- <link rel="icon" href="/assets/favicon.ico"> -->
+</head>
+<body>
+  <!-- Navbar mount point -->
+  <div id="site-header"></div>
+
+  <!-- Page content HERE -->
+  
+
+  <!-- Shared scripts: theme controller first, then navbar -->
+  <script type="module" src="/src/theme.ts"></script>
+  <script type="module" src="/src/navbar.ts"></script>
+
+  <noscript>
+    <div style="padding:12px; text-align:center; background:#fee; border-top:1px solid #fbb;">
+      This site works best with JavaScript enabled (for theme + navigation).
+    </div>
+  </noscript>
+</body>
+</html>
