@@ -14,8 +14,9 @@ export default defineConfig({
       input: {
         // add every HTML page you want Vite to process
         main:    resolve(__dirname, "index.html"),
-        about:   resolve(__dirname, "webpages/about_us.html"),
-        contact: resolve(__dirname, "webpages/contact.html"),
+        mission:   resolve(__dirname, "webpages/mission.html"),
+        about_us: resolve(__dirname, "webpages/about_us.html"),
+        documetation: resolve(_dirname, "webpages/documentation.html")
       },
     },
   },
