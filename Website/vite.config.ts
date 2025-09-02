@@ -1,13 +1,10 @@
 import { defineConfig } from "vite";
-import { resolve, dirname } from "path";
-import { fileURLToPath } from "url";
-
-// Recreate __dirname for ESM
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import { resolve } from "path";
 
 export default defineConfig({
-  root: "Website",         // or "." if vite.config.ts is inside Website/
-  base: "/FITARNA/",
+  // Config file is inside Website/, so root is current folder
+  root: ".",
+  base: "/FITARNA/",       // important for GitHub Pages project site
   publicDir: "public",     // Website/public → served at /FITARNA/
   server: { open: true },
   build: {
@@ -15,9 +12,10 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        main:    resolve(__dirname, "Website/index.html"),
-        about:   resolve(__dirname, "Website/webpages/about_us.html"),
-        contact: resolve(__dirname, "Website/webpages/contact.html"),
+        // add every HTML page you want Vite to process
+        main:    resolve(__dirname, "index.html"),
+        about:   resolve(__dirname, "webpages/about_us.html"),
+        contact: resolve(__dirname, "webpages/contact.html"),
       },
     },
   },
