@@ -1,18 +1,19 @@
 // Website/src/navbar.ts
 import { getTheme, toggleTheme, onThemeChange, type Theme } from "./theme";
 
-type MenuItem = { label: string; href: string };
+type MenuItem = { label: string; href: string; external?: boolean};
 
 const MENU_ITEMS: MenuItem[] = [
-  { label: "Indoor Maps", href: "/maps" },
-  { label: "Navigation", href: "/nav" },
-  { label: "Library Info", href: "/library" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" }
+  { label: "Mission (In Progress)", href: "/webpages/mission.html" },
+  { label: "About Us (In Progress)", href: "../webpages/about_us.html" },
+  { label: "Github", href: "https://github.com/jacobhallburns/FITARNA", external: true },
+  { label: "Documentation (In Progress)", href: "/webpages/documentation.html" },
+  
+
 ];
 
 const HOME_LABEL = "Home";
-const HOME_HREF = "/";
+const HOME_HREF = "/Website/index.html";
 
 function renderNavbar(mountEl: HTMLElement): void {
   const header = document.createElement("header");
@@ -25,11 +26,14 @@ function renderNavbar(mountEl: HTMLElement): void {
           Menu <span class="menu-caret" aria-hidden="true"></span>
         </button>
         <div class="menu-panel" id="menuPanel" role="menu">
-          <div class="menu-group">
-            ${MENU_ITEMS.map(
-              (item) => `<a class="menu-link" role="menuitem" href="${item.href}">${item.label}</a>`
-            ).join("")}
-          </div>
+            <div class="menu-group">
+               ${MENU_ITEMS.map(
+                  (item) =>
+                     `<a class="menu-link" role="menuitem" href="${item.href}" ${
+                     item.external ? 'target="_blank" rel="noopener noreferrer"' : ""
+                     }>${item.label}</a>`
+               ).join("")}
+            </div>
         </div>
       </div>
 

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Home Page</title>
+
+
+<script> 
+      (function () {
+            var KEY = 'site-theme';
+            var t = localStorage.getItem(KEY);
+            if (t !== 'light' && t !== 'dark') {
+                  t = 'light';
+                  try {localStorage.setItem(KEY, t); } catch (_) {}
+            }
+            document.documentElement.setAttribute('data-theme', t);
+      })();
+</script>
+
+<link rel="stylesheet" href="/assets/css/navbar.css">
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/theme-tokens.css">
+<link rel="stylesheet" href="/assets/css/navbar.css">
+
+
+</head>
+
+<body>
+      <div id="site-header"></div>
+      <h1 style="text-align:center;">FITARNA</h1>
+      <a href="/webpages/html_blueprint.html" target="_blank" rel="noopener noreferrer" class="center-link">Blueprint</a>
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vbarager2022@my.fit.edu,ddixon2022@my.fit.edu,jhallburns2021@my.fit.edu,ewadley2022@my.fit.edu,eribeiro@fit.edu" target="_blank" rel="noopener noreferrer" class="center-link">Contact Us</a>
+      <p>
+      <hr>
+      <p>
+      <center>
+            <TABLE border=1><TBODY>
+            <TR align=center>
+            <TD>Project Name</TD>
+            <TD>FIT AR Navigation App (FITARNA)</TD>
+            <TR align=center>
+                  <TD>Team Members and Email Addresses</TD>
+                  <TD>
+                        Vincenzo Barager (<a href="https://mail.google.com/mail/?view=cm&fs=1&to=vbarager2022@my.fit.edu" target="_blank" rel="noopener noreferrer">vbarager2022@my.fit.edu</a>)<br>
+                        Dathan Dixon (<a href="https://mail.google.com/mail/?view=cm&fs=1&to=ddixon2022@my.fit.edu" target="_blank" rel="noopener noreferrer">ddixon2022@my.fit.edu</a>)<br>
+                        Jacob Hall-Burns (<a href="https://mail.google.com/mail/?view=cm&fs=1&to=jhallburns2021@my.fit.edu" target="_blank" rel="noopener noreferrer">jhallburns2021@my.fit.edu</a>)<br>
+                        Ethan Wadley (<a href="https://mail.google.com/mail/?view=cm&fs=1&to=ewadley2022@my.fit.edu" target="_blank" rel="noopener noreferrer">ewadley2022@my.fit.edu</a>)<br>
+                  </TD>
+            <TR align=center>
+            <TD>Faculty Advisor</TD>
+            <TD>Eraldo Ribeiro (<a href="https://mail.google.com/mail/?view=cm&fs=1&to=eribeiro@fit.edu" target="_blank" rel="noopener noreferrer">eribeiro@fit.edu</a>)</TD></TR>
+            </TBODY></TABLE>
+      </center>
+      <p>
+      <center>
+      <h3>First Semester</h3>
+            <TABLE border=1><TBODY>
+            <TR align=center>
+            <TD>Plan (Sep 3)</TD>
+            <TD><a href="/documentation/plan1.pdf" target="_blank">Plan</a>, <a href="/documentation/plan1Pres.pdf" target="_blank">Presentation</a></TD>
+            <TR align=center>
+            <TD>Milestone 1 (Sep 29)</TD>
+            <TD><a href="/documentation/requirement.pdf" target="_blank">Requirement</a>, <a href="/documentation/design.pdf" target="_blank">Design</a>, <a href="/documentation/test.pdf" target="_blank">Test</a>, <a href="/documentation/milestone1.pdf" target="_blank">Presentation</a>, <a href="/documentation/eval1.pdf" target="_blank">Progress Evaluation</a></TD>
+            <TR align=center>
+            <TD>Milestone 2 (Oct 27)</TD>
+            <TD><a href="/documentation/milestone2.pdf" target="_blank">Presentation</a>, <a href="/documentation/eval2.pdf" target="_blank">Progress Evaluation</a></TD></TR>
+            <TR align=center>
+            <TD>Milestone 3 (Nov 24)</TD>
+            <TD><a href="/documentation/milestone3.pdf" target="_blank">Presentation</a>, <a href="/documentation/eval3.pdf" target="_blank">Progress Evaluation</a></TD></TR>
+            </TBODY></TABLE>
+      </center>
+
+      <center>
+
+      <h3>Second Semester</h3>
+
+            <TABLE border=1><TBODY>
+            <TR align=center>
+            <TD>Plan (???)</TD>
+            <TD><a href="/documentation/plan2.pdf" target="_blank">Plan</a>, <a href="/documentation/plan2Pres.pdf" target="_blank">Presentation</a></TD>
+            <TR align=center>
+            <TD>Milestone 4 (???)</TD>
+            <TD><a href="/documentation/milestone4.pdf" target="_blank">Presentation</a>, <a href="/documentation/eval4.pdf" target="_blank">Progress Evaluation</a></TD>
+            <TR align=center>
+            <TD>Milestone 5 (???)</TD>
+            <TD><a href="/documentation/poster.pdf" target="_blank">Poster</a>, <a href="/documentation/milestone5.pdf" target="_blank">Presentation</a>, <a href="/documentation/eval5.pdf" target="_blank">Progress Evaluation</a></TD></TR>
+            <TR align=center>
+            <TD>Milestone 6 (???)</TD>
+            <TD><a href="/documentation/userManual.pdf" target="_blank">User and/or Developer Manual</a>, <a href="/documentation/demoVideo.jpg" target="_blank">Demo Video</a>, <a href="/documentation/milestone6.pdf" target="_blank">Presentation</a>, <a href="/documentation/eval6.pdf" target="_blank">Progress Evaluation</a></TD></TR>
+            </TBODY></TABLE>
+      </center>
+
+      <center>
+
+      </center>
+
+
+      <p>
+      <hr>
+      <a href="/webpages/workflow.html" target="_blank" class="center-link">Student Workflow</a>
+      <script type="module" src="/src/theme.ts"></script>
+      <script type="module" src="/src/navbar.ts"></script>
+
+</body>
+</html>
