@@ -4,16 +4,16 @@ import { getTheme, toggleTheme, onThemeChange, type Theme } from "./theme";
 type MenuItem = { label: string; href: string; external?: boolean};
 
 const MENU_ITEMS: MenuItem[] = [
-  { label: "Mission (In Progress)", href: "/webpages/mission.html" },
-  { label: "About Us (In Progress)", href: "../webpages/about_us.html" },
+  { label: "Mission (In Progress)", href: "webpages/mission.html" },
+  { label: "About Us (In Progress)", href: "webpages/about_us.html" },
   { label: "Github", href: "https://github.com/jacobhallburns/FITARNA", external: true },
-  { label: "Documentation (In Progress)", href: "/webpages/documentation.html" },
+  { label: "Documentation (In Progress)", href: "webpages/documentation.html" },
   
 
 ];
 
 const HOME_LABEL = "Home";
-const HOME_HREF = "/Website/index.html";
+const HOME_HREF = "Website/index.html";
 
 function renderNavbar(mountEl: HTMLElement): void {
   const header = document.createElement("header");
