@@ -1,86 +1,85 @@
 <!doctype html>
 <html lang="en">
 <head>
-      <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      <title>FITARNA</title>
-      <meta name="Home Page" content="Website Requirements for Dr. Chan to grade" />
+    <title>FITARNA</title>
+    <meta name="Home Page" content="Website Requirements for Dr. Chan to grade" />
 
-      <!-- Prevent theme flash + default first visit to LIGHT -->
-      <script>
-      (function () {
-      var t = localStorage.getItem('site-theme');
-      if (t !== 'light' && t !== 'dark') { t = 'light'; try { localStorage.setItem('site-theme', t); } catch {} }
-      if (t === 'dark') document.documentElement.classList.add('dark');
-      document.documentElement.setAttribute('data-theme', t);
-      })();
-      </script>
+    <!-- Prevent theme flash + default first visit to LIGHT -->
+    <script>
+    (function () {
+    var t = localStorage.getItem('site-theme');
+    if (t !== 'light' && t !== 'dark') { t = 'light'; try { localStorage.setItem('site-theme', t); } catch {} }
+    if (t === 'dark') document.documentElement.classList.add('dark');
+    document.documentElement.setAttribute('data-theme', t);
+    })();
+    </script>
 
-      <!-- Styles: tokens FIRST, then base (consumes tokens), then navbar, then page-specific -->
-      <link rel="stylesheet" href="/assets/css/theme-tokens.css">
-      <link rel="stylesheet" href="/assets/css/base.css">
-      <link rel="stylesheet" href="/assets/css/navbar.css">
-      <link rel="stylesheet" href="/assets/css/tables.css">
-      
+    <!-- Styles: tokens FIRST, then base (consumes tokens), then navbar, then page-specific -->
+    <link rel="stylesheet" href="/assets/css/theme-tokens.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/navbar.css">
+    <link rel="stylesheet" href="/assets/css/tables.css">
 </head>
 <body>
-      <!-- Navbar mount point -->
-      <div id="site-header"></div>
+    <!-- Navbar mount point -->
+    <div id="site-header"></div>
 
-      <!-- Page content HERE -->
-      <h1 style="text-align:center;">FITARNA</h1>
-      <div style="text-align: center;">
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vbarager2022@my.fit.edu,ddixon2022@my.fit.edu,jhallburns2021@my.fit.edu,ewadley2022@my.fit.edu,eribeiro@fit.edu"
-                  target="_blank" rel="noopener noreferrer"
-                  class="contact-btn">
-                  Contact Us
-            </a>
-      </div>
-      <h2 class="table-title">Project Info</h2>
-      <div class="table-wrap">
-            <table class="table kv-table" id="project-info-table">
-                  <tbody></tbody>
-            </table>
-      </div>
+    <!-- Page content HERE -->
+    <h1 style="text-align:center;">FITARNA</h1>
+    <div style="text-align: center;">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vbarager2022@my.fit.edu,ddixon2022@my.fit.edu,jhallburns2021@my.fit.edu,ewadley2022@my.fit.edu,eribeiro@fit.edu"
+            target="_blank" rel="noopener noreferrer"
+            class="contact-btn">
+            Contact Us
+        </a>
+    </div>
+    <h2 class="table-title">Project Info</h2>
+    <div class="table-wrap">
+        <table class="table kv-table" id="project-info-table">
+            <tbody></tbody>
+        </table>
+    </div>
 
-      <h2 class="table-title">First Semester</h2>
-      <div class="table-wrap">
-            <table class="table" id="first-sem-table">
-                  <thead>
-                        <tr><th>Deliverable</th><th>Links</th></tr>
-                  </thead>
-                  <tbody></tbody>
-            </table>
-      </div>
+    <h2 class="table-title">First Semester</h2>
+    <div class="table-wrap">
+        <table class="table" id="first-sem-table">
+            <thead>
+                <tr><th>Deliverable</th><th>Links</th></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 
-      <h2 class="table-title">Second Semester</h2>
-      <div class="table-wrap">
-            <table class="table" id="second-sem-table">
-                  <thead>
-                        <tr><th>Deliverable</th><th>Links</th></tr>
-                  </thead>
-                  <tbody></tbody>
-            </table>
-      </div>
+    <h2 class="table-title">Second Semester</h2>
+    <div class="table-wrap">
+        <table class="table" id="second-sem-table">
+            <thead>
+                <tr><th>Deliverable</th><th>Links</th></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 
-      <!-- Shared scripts: theme controller first, then navbar -->
-      <script type="module" src="/src/theme.ts"></script>
-      <script type="module" src="/src/navbar.ts"></script>
-      <script type="module" src="/src/tables.ts"></script>
-      
+    <!-- Shared scripts: theme controller first, then navbar -->
+    <script type="module" src="/src/theme.ts"></script>
+    <script type="module" src="/src/navbar.ts"></script>
+    <script type="module" src="/src/tables.ts"></script>
+    
 
-      <noscript>
-      <div style="padding:12px; text-align:center; background:#fee; border-top:1px solid #fbb;">
-      This site works best with JavaScript enabled (for theme + navigation).
-      </div>
-      </noscript>
+    <noscript>
+    <div style="padding:12px; text-align:center; background:#fee; border-top:1px solid #fbb;">
+    This site works best with JavaScript enabled (for theme + navigation).
+    </div>
+    </noscript>
 </body>
 <footer>
-      <p>&copy; 2025 FITARNA Senior Design Team. All rights reserved.</p>
-      <p>
-            <a href="https://github.com/jacobhallburns/FITARNA" target="_blank" rel="noopener noreferrer" class="menu-link">GitHub</a>
-            <a href="./webpages/documentation.html" class="menu-link">Documentation (In Progress)</a>
-      </p>
+    <p>&copy; 2025 FITARNA Senior Design Team. All rights reserved.</p>
+    <p>
+        <a href="https://github.com/jacobhallburns/FITARNA" target="_blank" rel="noopener noreferrer" class="menu-link">GitHub</a>
+        <a href="./webpages/documentation.html" class="menu-link">Documentation (In Progress)</a>
+    </p>
 </footer>
 </html>
