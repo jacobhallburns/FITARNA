@@ -39,7 +39,7 @@ const firstSemester: MilestoneRow[] = [
     title: "Plan (Sep 3)",
     links: [
       { label: "Plan", href: "/FITARNA/documentation/FITARNA-Project-Plan-Fall-2025.pdf", external: true },
-      { label: "Presentation", href: "/FITARNA/documentation/plan1Pres.pdf", external: true },
+      { label: "Presentation", href: "/FITARNA/documentation/FIT-AR-Navigation-App-(FITARNA)-Presentation.pdf", external: true },
     ],
   },
   {
