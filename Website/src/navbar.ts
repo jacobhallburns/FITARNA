@@ -13,7 +13,7 @@ const MENU_ITEMS: MenuItem[] = [
 ];
 
 const HOME_LABEL = "Home";
-const HOME_HREF = "Website/index.html";
+const HOME_HREF = "/FITARNA/index.html";
 
 function renderNavbar(mountEl: HTMLElement): void {
   const header = document.createElement("header");
