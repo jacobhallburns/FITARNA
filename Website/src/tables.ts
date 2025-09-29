@@ -45,11 +45,11 @@ const firstSemester: MilestoneRow[] = [
   {
     title: "Milestone 1 (Sep 29)",
     links: [
-      { label: "Requirement", href: "/documentation/requirement.pdf", external: true },
-      { label: "Design", href: "/documentation/design.pdf", external: true },
-      { label: "Test", href: "/documentation/test.pdf", external: true },
-      { label: "Presentation", href: "/documentation/milestone1.pdf", external: true },
-      { label: "Progress Evaluation", href: "/documentation/eval1.pdf", external: true },
+      { label: "Requirement", href: "/FITARNA/documentation/Requirements_Doc_FITARNA.pdf", external: true },
+      { label: "Design", href: "/FITARNA/documentation/Design_Doc_FITARNA.pdf", external: true },
+      { label: "Test", href: "/FITARNA/documentation/Software_Test_Document_FITARNA.pdf", external: true },
+      { label: "Presentation", href: "/FITARNA/documentation/milestone1.pdf", external: true },
+      { label: "Progress Evaluation", href: "/FITARNA/documentation/eval1.pdf", external: true },
     ],
   },
   {
