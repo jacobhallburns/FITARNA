@@ -66,3 +66,15 @@ html.dark .theme-toggle .moon { display: inline; }
 @media (max-width: 640px) {
   .navbar { grid-template-columns: auto auto 1fr auto; gap: 8px; }
 }
+
+.site-header .navbar .nav-actions a.contact-btn {
+  padding: 3px 8px;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  line-height: 2.2;
+}
+.nav-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px; 
+}

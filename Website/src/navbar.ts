@@ -41,9 +41,12 @@ function renderNavbar(mountEl: HTMLElement): void {
         <a href="${HOME_HREF}" aria-label="Go to Home">${HOME_LABEL}</a>
       </div>
 
-      <div></div>
+      <div class="spacer"></div>
 
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" aria-pressed="false" title="Toggle theme">
+      <div class="nav-actions">
+        <a class="contact-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=vbarager2022@my.fit.edu,ddixon2022@my.fit.edu,jhallburns2021@my.fit.edu,ewadley2022@my.fit.edu,eribeiro@fit.edu" target="_blank" rel="noopener noreferrer">
+          Contact Us </a>      
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" aria-pressed="false" title="Toggle theme">
         <svg class="sun" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M6.76 4.84l-1.8-1.79-1.42 1.41 1.79 1.8 1.43-1.42zm10.48 0l1.8-1.79 1.42 1.41-1.79 1.8-1.43-1.42zM12 4V1h0v3zm0 19v-3h0v3zM4 12H1v0h3zm19 0h-3v0h3zM6.76 19.16l-1.43 1.42-1.79-1.8 1.42-1.41 1.8 1.79zm10.48 0l1.43 1.42 1.79-1.8-1.42-1.41-1.8 1.79zM12 8a4 4 0 100 8 4 4 0 000-8z"/>
         </svg>
