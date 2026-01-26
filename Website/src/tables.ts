@@ -70,21 +70,21 @@ const firstSemester: MilestoneRow[] = [
 
 const secondSemester: MilestoneRow[] = [
   {
-    title: "Plan (???)",
+    title: "Plan (Jan 26)",
     links: [
-      { label: "Plan", href: "/documentation/plan2.pdf", external: true },
-      { label: "Presentation", href: "/documentation/plan2Pres.pdf", external: true },
+      { label: "Plan", href: "/documentation/FITARNA Project Plan Fall 2026.pdf", external: true },
+      { label: "Presentation", href: "/documentation/FITARNA Plan (Spring) Presentation.pdf", external: true },
     ],
   },
   {
-    title: "Milestone 4 (???)",
+    title: "Milestone 4 (Feb 23)",
     links: [
       { label: "Presentation", href: "/documentation/milestone4.pdf", external: true },
       { label: "Progress Evaluation", href: "/documentation/eval4.pdf", external: true },
     ],
   },
   {
-    title: "Milestone 5 (???)",
+    title: "Milestone 5 (Mar 30)",
     links: [
       { label: "Poster", href: "/documentation/poster.pdf", external: true },
       { label: "Presentation", href: "/documentation/milestone5.pdf", external: true },
@@ -92,7 +92,7 @@ const secondSemester: MilestoneRow[] = [
     ],
   },
   {
-    title: "Milestone 6 (???)",
+    title: "Milestone 6 (Apr 20)",
     links: [
       { label: "User and/or Developer Manual", href: "/documentation/userManual.pdf", external: true },
       { label: "Demo Video", href: "/documentation/demoVideo.jpg", external: true },
