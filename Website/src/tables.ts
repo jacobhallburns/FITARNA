@@ -79,8 +79,8 @@ const secondSemester: MilestoneRow[] = [
   {
     title: "Milestone 4 (Feb 23)",
     links: [
-      { label: "Presentation", href: "/documentation/", external: true },
-      { label: "Progress Evaluation", href: "/Milestone4Evaluationcopy.pdf", external: true },
+      { label: "Presentation", href: "/FITARNA/documentation/", external: true },
+      { label: "Progress Evaluation", href: "/FITARNA/documentation/Milestone4Evaluationcopy.pdf", external: true },
     ],
   },
   {
