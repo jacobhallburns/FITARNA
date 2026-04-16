@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title><!-- Page Title --></title>
-    <meta name="description" content="<!-- Optional: short page description -->" />
+    <title>Mission — FITARNA</title>
+    <meta name="description" content="The mission and goals of the FITARNA Indoor AR Navigation project." />
 
     <!-- Prevent theme flash + default first visit to LIGHT -->
     <script>
@@ -17,24 +17,231 @@
     })();
     </script>
 
-    <!-- Styles: tokens FIRST, then base (consumes tokens), then navbar, then page-specific -->
     <link rel="stylesheet" href="../assets/css/theme-tokens.css">
     <link rel="stylesheet" href="../assets/css/base.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
-    <!-- Optional: your page CSS -->
-    <!-- <link rel="stylesheet" href="/assets/css/page-xyz.css"> -->
 
-    <!-- Favicons (optional) -->
-    <!-- <link rel="icon" href="/assets/favicon.ico"> -->
+    <style>
+        .page-hero {
+            max-width: 800px;
+            margin: 60px auto 48px;
+            padding: 0 16px;
+            text-align: center;
+        }
+        .page-hero h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 0 0 16px;
+            letter-spacing: -0.5px;
+        }
+        .page-hero .subtitle {
+            font-size: 1.2rem;
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        .divider {
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+            margin: 24px auto;
+        }
+
+        .section {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            padding: 0 16px;
+        }
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0 0 20px;
+        }
+
+        .mission-statement {
+            background: var(--surface);
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            padding: 2rem 2.5rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            max-width: 780px;
+            margin: 0 auto 60px;
+        }
+        .mission-statement blockquote {
+            margin: 0;
+            font-size: 1.25rem;
+            line-height: 1.75;
+            color: var(--text);
+            font-style: italic;
+        }
+        .mission-statement cite {
+            display: block;
+            margin-top: 16px;
+            font-size: 0.9rem;
+            color: var(--muted);
+            font-style: normal;
+        }
+
+        .goal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .goal-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.4rem 1.2rem;
+            box-shadow: var(--shadow);
+        }
+        .goal-card .goal-icon {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+        .goal-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin: 0 0 8px;
+            color: var(--text);
+        }
+        .goal-card p {
+            margin: 0;
+            font-size: 0.92rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .problem-body {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.6rem 1.8rem;
+            box-shadow: var(--shadow);
+            font-size: 1rem;
+            line-height: 1.75;
+            color: var(--text);
+        }
+        .problem-body p { margin: 0 0 14px; }
+        .problem-body p:last-child { margin-bottom: 0; }
+
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Navbar mount point -->
     <div id="site-header"></div>
 
-    <!-- Page content HERE -->
+    <!-- Hero -->
+    <div class="page-hero">
+        <h1>Our Mission</h1>
+        <div class="divider"></div>
+        <p class="subtitle">
+            Bringing augmented reality navigation indoors — making every building as easy to navigate as an open map.
+        </p>
+    </div>
 
+    <!-- Mission Statement -->
+    <div style="max-width:900px; margin:0 auto; padding:0 16px 0;">
+        <div class="mission-statement">
+            <blockquote>
+                "To develop an accessible, real-time augmented reality indoor navigation system that empowers students,
+                faculty, and visitors at Florida Tech to find their way through complex indoor environments
+                with confidence and ease."
+            </blockquote>
+            <cite>— FITARNA Senior Design Team, Florida Institute of Technology</cite>
+        </div>
+    </div>
 
-    <!-- Shared scripts: theme controller first, then navbar -->
+    <!-- Problem Statement -->
+    <div class="section">
+        <h2>The Problem</h2>
+        <div class="problem-body">
+            <p>
+                GPS technology has transformed outdoor navigation, but it fails entirely the moment you step inside
+                a building. Multi-story academic buildings, labs, and event centers can be genuinely disorienting —
+                especially for new students, guests, or anyone with accessibility needs.
+            </p>
+            <p>
+                Traditional solutions like printed maps and static directory boards are easy to miss, hard to update,
+                and provide no turn-by-turn guidance. FITARNA addresses this gap by using the camera already in
+                every smartphone to overlay live navigation cues directly onto the real world.
+            </p>
+        </div>
+    </div>
+
+    <!-- Goals -->
+    <div class="section">
+        <h2>Project Goals</h2>
+        <div class="goal-grid">
+            <div class="goal-card">
+                <div class="goal-icon">📍</div>
+                <h3>Real-Time Positioning</h3>
+                <p>Use AR Foundation and on-device sensors to accurately determine a user's location and orientation within a mapped building.</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-icon">🗺️</div>
+                <h3>Turn-by-Turn Guidance</h3>
+                <p>Overlay directional waypoints and route highlights onto the camera feed, guiding users to any room or point of interest.</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-icon">📱</div>
+                <h3>Cross-Platform Support</h3>
+                <p>Deliver a seamless experience on both iOS (ARKit) and Android (ARCore) devices through a shared Unity codebase.</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-icon">♿</div>
+                <h3>Accessibility First</h3>
+                <p>Design navigation paths and UI elements with accessibility in mind, supporting users of all abilities.</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-icon">⚡</div>
+                <h3>Low-Latency Experience</h3>
+                <p>Ensure AR overlays remain stable and responsive even in challenging lighting conditions typical of indoor spaces.</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-icon">🏫</div>
+                <h3>Campus Integration</h3>
+                <p>Map Florida Tech buildings with accurate floor plans so the system can be deployed and extended to new buildings over time.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Technology -->
+    <div class="section">
+        <h2>How We Get There</h2>
+        <div class="problem-body">
+            <p>
+                FITARNA is built on Unity's AR Foundation framework, which provides a unified abstraction layer over
+                ARCore (Android) and ARKit (iOS). This lets the team write shared C# logic while still leveraging
+                each platform's native AR capabilities.
+            </p>
+            <p>
+                Floor-plan data is served via a TypeScript backend, which the app queries at runtime to load the
+                correct map for the building being navigated. A pathfinding layer computes the optimal route and
+                converts it into a series of 3D waypoints that are anchored to real-world coordinates and rendered
+                as AR overlays.
+            </p>
+            <div class="badge-row">
+                <span class="badge">Unity</span>
+                <span class="badge">AR Foundation</span>
+                <span class="badge">ARCore</span>
+                <span class="badge">ARKit</span>
+                <span class="badge">C#</span>
+                <span class="badge">TypeScript</span>
+                <span class="badge">URP</span>
+            </div>
+        </div>
+    </div>
+
     <script type="module" src="/src/theme.ts"></script>
     <script type="module" src="/src/navbar.ts"></script>
 
@@ -44,4 +251,11 @@
     </div>
     </noscript>
 </body>
+<footer>
+    <p>&copy; 2025 FITARNA Senior Design Team. All rights reserved.</p>
+    <p>
+        <a href="https://github.com/jacobhallburns/FITARNA" target="_blank" rel="noopener noreferrer" class="menu-link">GitHub</a>
+        <a href="/FITARNA/webpages/documentation.html" class="menu-link">Documentation</a>
+    </p>
+</footer>
 </html>

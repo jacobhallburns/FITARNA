@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>FITARNA</title>
-    <meta name="About Us" content="Meet the Team" />
+    <title>About Us — FITARNA</title>
+    <meta name="description" content="Meet the FITARNA senior design team at Florida Institute of Technology." />
 
     <!-- Prevent theme flash + default first visit to LIGHT -->
     <script>
@@ -17,19 +17,292 @@
     })();
     </script>
 
-    <!-- Styles: tokens FIRST, then base (consumes tokens), then navbar, then page-specific -->
     <link rel="stylesheet" href="../assets/css/theme-tokens.css">
     <link rel="stylesheet" href="../assets/css/base.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
+
+    <style>
+        .page-hero {
+            max-width: 800px;
+            margin: 60px auto 48px;
+            padding: 0 16px;
+            text-align: center;
+        }
+        .page-hero h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 0 0 16px;
+            letter-spacing: -0.5px;
+        }
+        .page-hero .subtitle {
+            font-size: 1.15rem;
+            color: var(--muted);
+            max-width: 580px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        .divider {
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+            margin: 24px auto;
+        }
+
+        .section {
+            max-width: 960px;
+            margin: 0 auto 64px;
+            padding: 0 16px;
+        }
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0 0 24px;
+            text-align: center;
+        }
+
+        /* Team grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+        .member-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.6rem 1.2rem 1.4rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .member-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: color-mix(in oklab, var(--accent) 30%, var(--surface));
+            border: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+            flex-shrink: 0;
+        }
+        .member-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 0;
+        }
+        .member-role {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin: 0;
+        }
+        .member-bio {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.6;
+            margin: 4px 0 0;
+        }
+        .member-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .member-links a {
+            font-size: 0.82rem;
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        /* Advisor card */
+        .advisor-card {
+            background: var(--surface);
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            padding: 1.8rem 2rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        .advisor-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: color-mix(in oklab, var(--accent) 30%, var(--surface));
+            border: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+        .advisor-info h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 0 0 4px;
+        }
+        .advisor-info .advisor-title {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin: 0 0 10px;
+        }
+        .advisor-info p {
+            font-size: 0.92rem;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.65;
+        }
+
+        /* University card */
+        .uni-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        .uni-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0 0 8px;
+        }
+        .uni-card p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.65;
+        }
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 16px;
+        }
+
+        @media (max-width: 560px) {
+            .advisor-card { flex-direction: column; align-items: center; text-align: center; }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navbar mount point -->
     <div id="site-header"></div>
 
-    <h1>In Progress</h1>
+    <!-- Hero -->
+    <div class="page-hero">
+        <h1>About Us</h1>
+        <div class="divider"></div>
+        <p class="subtitle">
+            We are a senior design team at the Florida Institute of Technology building an indoor AR navigation
+            app from the ground up.
+        </p>
+    </div>
 
+    <!-- Team Members -->
+    <div class="section">
+        <h2 class="section-title">Meet the Team</h2>
+        <div class="team-grid">
 
-    <!-- Shared scripts: theme controller first, then navbar -->
+            <!-- ── TEAM MEMBER 1 ── Replace initials, name, role, bio, and links -->
+            <div class="member-card">
+                <div class="member-avatar">JH</div>
+                <p class="member-name">Jacob Hall Burns</p>
+                <p class="member-role">Team Lead / Web Development</p>
+                <p class="member-bio">Placeholder bio — describe your focus area, skills, or what you're working on in the project.</p>
+                <div class="member-links">
+                    <a href="https://github.com/jacobhallburns" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+            </div>
+
+            <!-- ── TEAM MEMBER 2 ── Replace initials, name, role, bio, and links -->
+            <div class="member-card">
+                <div class="member-avatar">??</div>
+                <p class="member-name">Team Member Name</p>
+                <p class="member-role">Role / Specialty</p>
+                <p class="member-bio">Placeholder bio — describe your focus area, skills, or what you're working on in the project.</p>
+                <div class="member-links">
+                    <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+            </div>
+
+            <!-- ── TEAM MEMBER 3 ── Replace initials, name, role, bio, and links -->
+            <div class="member-card">
+                <div class="member-avatar">??</div>
+                <p class="member-name">Team Member Name</p>
+                <p class="member-role">Role / Specialty</p>
+                <p class="member-bio">Placeholder bio — describe your focus area, skills, or what you're working on in the project.</p>
+                <div class="member-links">
+                    <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+            </div>
+
+            <!-- ── TEAM MEMBER 4 ── Replace initials, name, role, bio, and links (duplicate block for more members) -->
+            <div class="member-card">
+                <div class="member-avatar">??</div>
+                <p class="member-name">Team Member Name</p>
+                <p class="member-role">Role / Specialty</p>
+                <p class="member-bio">Placeholder bio — describe your focus area, skills, or what you're working on in the project.</p>
+                <div class="member-links">
+                    <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Faculty Advisor -->
+    <div class="section">
+        <h2 class="section-title">Faculty Advisor</h2>
+        <div class="advisor-card">
+            <div class="advisor-avatar">Dr</div>
+            <div class="advisor-info">
+                <h3>Dr. Chan</h3>
+                <p class="advisor-title">Faculty Advisor — Florida Institute of Technology</p>
+                <p>Placeholder — add a short description of Dr. Chan's role, department, research interests, or how they are guiding the project.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- About the Program -->
+    <div class="section">
+        <h2 class="section-title">About the Program</h2>
+        <div class="uni-card">
+            <h3>Florida Institute of Technology — Senior Design</h3>
+            <p>
+                FITARNA is a two-semester senior capstone project in the Computer Science / Software Engineering
+                program at Florida Tech. The project challenges students to take a real-world problem from
+                requirements through design, implementation, and final presentation.
+            </p>
+            <div class="badge-row">
+                <span class="badge">Florida Institute of Technology</span>
+                <span class="badge">Senior Capstone</span>
+                <span class="badge">2024 – 2025</span>
+                <span class="badge">AR / Mobile</span>
+            </div>
+        </div>
+    </div>
+
     <script type="module" src="/src/theme.ts"></script>
     <script type="module" src="/src/navbar.ts"></script>
 
@@ -39,4 +312,11 @@
     </div>
     </noscript>
 </body>
+<footer>
+    <p>&copy; 2025 FITARNA Senior Design Team. All rights reserved.</p>
+    <p>
+        <a href="https://github.com/jacobhallburns/FITARNA" target="_blank" rel="noopener noreferrer" class="menu-link">GitHub</a>
+        <a href="/FITARNA/webpages/documentation.html" class="menu-link">Documentation</a>
+    </p>
+</footer>
 </html>
