@@ -11,7 +11,10 @@
     <script>
     (function () {
         var t = localStorage.getItem('site-theme');
-        if (t !== 'light' && t !== 'dark') { t = 'light'; try { localStorage.setItem('site-theme', t); } catch {} }
+        if (t !== 'light' && t !== 'dark') {
+            t = 'light';
+            try { localStorage.setItem('site-theme', t); } catch {}
+        }
         if (t === 'dark') document.documentElement.classList.add('dark');
         document.documentElement.setAttribute('data-theme', t);
     })();
@@ -22,12 +25,17 @@
     <link rel="stylesheet" href="../assets/css/navbar.css">
 
     <style>
+        :root {
+            --doc-sticky-offset: 72px;
+        }
+
         .page-hero {
-            max-width: 800px;
-            margin: 60px auto 48px;
+            max-width: 900px;
+            margin: 60px auto 40px;
             padding: 0 16px;
             text-align: center;
         }
+
         .page-hero h1 {
             font-size: 2.6rem;
             font-weight: 800;
@@ -35,13 +43,15 @@
             margin: 0 0 16px;
             letter-spacing: -0.5px;
         }
+
         .page-hero .subtitle {
             font-size: 1.15rem;
             color: var(--muted);
-            max-width: 580px;
+            max-width: 640px;
             margin: 0 auto;
             line-height: 1.7;
         }
+
         .divider {
             width: 60px;
             height: 4px;
@@ -50,60 +60,87 @@
             margin: 24px auto;
         }
 
-        /* Layout: sidebar + content */
-        .doc-layout {
-            max-width: 1100px;
-            margin: 0 auto 80px;
+        /* Sticky top section nav */
+        .doc-top-nav-wrap {
+            position: sticky;
+            top: var(--doc-sticky-offset);
+            z-index: 40;
             padding: 0 16px;
-            display: grid;
-            grid-template-columns: 220px 1fr;
-            gap: 40px;
-            align-items: start;
-        }
-        @media (max-width: 700px) {
-            .doc-layout { grid-template-columns: 1fr; }
-            .doc-nav { display: none; }
+            margin: 0 auto 36px;
         }
 
-        /* Sticky sidebar nav */
-        .doc-nav {
-            position: sticky;
-            top: 80px;
-            background: var(--surface);
+        .doc-top-nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 12px;
+            background: color-mix(in oklab, var(--surface) 92%, transparent);
+            backdrop-filter: blur(12px);
             border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 1rem;
+            border-radius: 16px;
             box-shadow: var(--shadow);
+            scrollbar-width: thin;
         }
-        .doc-nav p {
-            font-size: 0.75rem;
+
+        .doc-top-nav-label {
+            flex-shrink: 0;
+            font-size: 0.78rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.08em;
             color: var(--muted);
-            margin: 0 0 10px 4px;
-        }
-        .doc-nav a {
-            display: block;
-            padding: 7px 10px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 500;
-            transition: background 0.15s;
-        }
-        .doc-nav a:hover { background: color-mix(in oklab, var(--accent) 14%, transparent); }
-        .doc-nav .nav-sub {
-            padding-left: 18px;
-            font-size: 0.85rem;
-            color: var(--muted);
+            padding: 0 6px 0 2px;
         }
 
-        /* Content sections */
+        .doc-top-nav a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 9px 14px;
+            border-radius: 999px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.92rem;
+            font-weight: 600;
+            transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+            flex-shrink: 0;
+        }
+
+        .doc-top-nav a:hover {
+            background: color-mix(in oklab, var(--accent) 12%, transparent);
+        }
+
+        .doc-top-nav a.active {
+            color: var(--primary);
+            background: color-mix(in oklab, var(--accent) 18%, transparent);
+            box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--accent) 35%, var(--border));
+        }
+
+        /* Center the page content */
+        .doc-layout {
+            max-width: 900px;
+            margin: 0 auto 80px;
+            padding: 0 16px;
+        }
+
+        main {
+            width: 100%;
+        }
+
+        /* Sections */
         .doc-section {
             margin-bottom: 56px;
+            scroll-margin-top: 155px;
         }
+
+        .doc-subsection {
+            scroll-margin-top: 155px;
+        }
+
         .doc-section h2 {
             font-size: 1.6rem;
             font-weight: 700;
@@ -111,18 +148,23 @@
             border-bottom: 2px solid var(--border);
             padding-bottom: 10px;
             margin: 0 0 20px;
+            text-align: left;
         }
+
         .doc-section h3 {
             font-size: 1.1rem;
             font-weight: 700;
             color: var(--text);
             margin: 28px 0 10px;
+            text-align: left;
         }
+
         .doc-section p {
             font-size: 0.97rem;
             line-height: 1.75;
             color: var(--text);
             margin: 0 0 14px;
+            text-align: left;
         }
 
         /* Arch diagram */
@@ -170,8 +212,15 @@
             color: var(--text);
             transition: background 0.12s;
         }
-        .link-item:last-child { border-bottom: 0; }
-        .link-item:hover { background: color-mix(in oklab, var(--accent) 10%, transparent); }
+
+        .link-item:last-child {
+            border-bottom: 0;
+        }
+
+        .link-item:hover {
+            background: color-mix(in oklab, var(--accent) 10%, transparent);
+        }
+
         .link-item .link-label {
             font-size: 0.92rem;
             font-weight: 500;
@@ -203,6 +252,44 @@
             flex-wrap: wrap;
             gap: 8px;
             margin-top: 12px;
+            justify-content: flex-start;
+        }
+
+        @media (max-width: 760px) {
+            :root {
+                --doc-sticky-offset: 68px;
+            }
+
+            .page-hero {
+                margin-top: 42px;
+                margin-bottom: 28px;
+            }
+
+            .page-hero h1 {
+                font-size: 2.15rem;
+            }
+
+            .doc-top-nav-wrap {
+                margin-bottom: 28px;
+            }
+
+            .doc-top-nav {
+                padding: 10px;
+                border-radius: 14px;
+            }
+
+            .doc-top-nav a {
+                font-size: 0.88rem;
+                padding: 8px 12px;
+            }
+
+            .doc-section {
+                scroll-margin-top: 145px;
+            }
+
+            .doc-subsection {
+                scroll-margin-top: 145px;
+            }
         }
     </style>
 </head>
@@ -218,25 +305,24 @@
         </p>
     </div>
 
-    <div class="doc-layout">
-
-        <!-- Sidebar nav -->
-        <nav class="doc-nav" aria-label="Documentation sections">
-            <p>On this page</p>
-            <a href="#overview">Project Overview</a>
-            <a href="#architecture">Architecture</a>
-            <a href="#tools-unity" class="nav-sub">Unity</a>
-            <a href="#tools-ar" class="nav-sub">AR SDKs</a>
-            <a href="#tools-languages" class="nav-sub">Languages</a>
-            <a href="#tools-data" class="nav-sub">Data Formats</a>
-            <a href="#repo">Repository</a>
+    <!-- Sticky top nav -->
+    <div class="doc-top-nav-wrap">
+        <nav class="doc-top-nav" aria-label="Documentation sections">
+            <span class="doc-top-nav-label">On this page</span>
+            <a href="#overview" data-section-link="overview">Overview</a>
+            <a href="#architecture" data-section-link="architecture">Architecture</a>
+            <a href="#tools-unity" data-section-link="tools-unity">Unity</a>
+            <a href="#tools-ar" data-section-link="tools-ar">AR SDKs</a>
+            <a href="#tools-languages" data-section-link="tools-languages">Languages</a>
+            <a href="#tools-data" data-section-link="tools-data">Data Formats</a>
+            <a href="#repo" data-section-link="repo">Repository</a>
         </nav>
+    </div>
 
-        <!-- Main content -->
+    <div class="doc-layout">
         <main>
-
             <!-- Overview -->
-            <div class="doc-section" id="overview">
+            <section class="doc-section" id="overview">
                 <h2>Project Overview</h2>
                 <p>
                     FITARNA (<strong>F</strong>lorida <strong>I</strong>nstitute of <strong>T</strong>echnology
@@ -254,10 +340,10 @@
                     <span class="badge">iOS + Android</span>
                     <span class="badge">C# / TypeScript</span>
                 </div>
-            </div>
+            </section>
 
             <!-- Architecture -->
-            <div class="doc-section" id="architecture">
+            <section class="doc-section" id="architecture">
                 <h2>Architecture</h2>
                 <p>The system is divided into three layers that communicate at well-defined interfaces:</p>
 
@@ -294,148 +380,154 @@
                     <strong>Map Service</strong> — a lightweight TypeScript backend that stores building floor
                     plans as JSON and exposes them via HTTP so the app can load the correct map on demand.
                 </p>
-            </div>
+            </section>
 
-            <!-- Tools: Unity -->
-            <div class="doc-section" id="tools-unity">
+            <!-- Tools -->
+            <section class="doc-section" id="tools">
                 <h2>Tools &amp; Technologies</h2>
-                <h3 id="tools-unity">Unity</h3>
 
-                <div class="link-group">
-                    <div class="link-group-title">Unity Core</div>
-                    <a class="link-item" href="https://docs.unity.com/en-us" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">Unity Documentation</span>
-                        <span class="link-desc">Official Unity Manual &amp; Scripting API</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@6.2/manual/index.html" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">AR Foundation 6.2</span>
-                        <span class="link-desc">Cross-platform AR framework used for plane detection &amp; session management</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.xr.management@4.5/manual/index.html" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">XR Plug-in Management 4.5</span>
-                        <span class="link-desc">Manages loading and lifecycle of XR provider plug-ins</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://unity.com/features/srp/universal-render-pipeline" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">Universal Render Pipeline (URP)</span>
-                        <span class="link-desc">Render pipeline used for AR overlay shaders and visual effects</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.inputsystem@1.14/manual/index.html" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">Input System 1.14</span>
-                        <span class="link-desc">Handles touch input and device-specific gesture detection</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.ugui@2.0/manual/TextMeshPro/index.html" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">TextMesh Pro</span>
-                        <span class="link-desc">High-quality text rendering used for in-AR labels and UI</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://docs.unity3d.com/ScriptReference/LineRenderer.html" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">Line Renderer</span>
-                        <span class="link-desc">Renders the navigation path as a 3D line through the AR environment</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.localization@1.0/manual/index.html" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">Localization Package</span>
-                        <span class="link-desc">Internationalization support for UI strings</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://docs.unity3d.com/540/Documentation/Manual/UnityWebRequest.html" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">Unity Web Request</span>
-                        <span class="link-desc">Used to fetch floor-plan data from the TypeScript backend at runtime</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
+                <div class="doc-subsection" id="tools-unity">
+                    <h3>Unity</h3>
+
+                    <div class="link-group">
+                        <div class="link-group-title">Unity Core</div>
+                        <a class="link-item" href="https://docs.unity.com/en-us" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">Unity Documentation</span>
+                            <span class="link-desc">Official Unity Manual &amp; Scripting API</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@6.2/manual/index.html" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">AR Foundation 6.2</span>
+                            <span class="link-desc">Cross-platform AR framework used for plane detection &amp; session management</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.xr.management@4.5/manual/index.html" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">XR Plug-in Management 4.5</span>
+                            <span class="link-desc">Manages loading and lifecycle of XR provider plug-ins</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://unity.com/features/srp/universal-render-pipeline" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">Universal Render Pipeline (URP)</span>
+                            <span class="link-desc">Render pipeline used for AR overlay shaders and visual effects</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.inputsystem@1.14/manual/index.html" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">Input System 1.14</span>
+                            <span class="link-desc">Handles touch input and device-specific gesture detection</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.ugui@2.0/manual/TextMeshPro/index.html" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">TextMesh Pro</span>
+                            <span class="link-desc">High-quality text rendering used for in-AR labels and UI</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://docs.unity3d.com/ScriptReference/LineRenderer.html" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">Line Renderer</span>
+                            <span class="link-desc">Renders the navigation path as a 3D line through the AR environment</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.localization@1.0/manual/index.html" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">Localization Package</span>
+                            <span class="link-desc">Internationalization support for UI strings</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://docs.unity3d.com/540/Documentation/Manual/UnityWebRequest.html" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">Unity Web Request</span>
+                            <span class="link-desc">Used to fetch floor-plan data from the TypeScript backend at runtime</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                    </div>
                 </div>
 
-                <!-- AR SDKs -->
-                <h3 id="tools-ar">AR SDKs</h3>
-                <div class="link-group">
-                    <div class="link-group-title">Platform AR Runtimes</div>
-                    <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.xr.arcore@6.2/manual/index.html" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">ARCore XR Plug-in 6.2</span>
-                        <span class="link-desc">Unity plug-in bridging AR Foundation to Google ARCore on Android</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://developers.google.com/ar/develop" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">ARCore (Google)</span>
-                        <span class="link-desc">Google's AR platform SDK — used for Android builds</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.xr.arkit@4.2/manual/" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">ARKit XR Plug-in 4.2</span>
-                        <span class="link-desc">Unity plug-in bridging AR Foundation to Apple ARKit on iOS</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://developer.apple.com/documentation/arkit/" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">ARKit (Apple)</span>
-                        <span class="link-desc">Apple's AR platform SDK — used for iOS builds</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
+                <div class="doc-subsection" id="tools-ar">
+                    <h3>AR SDKs</h3>
+                    <div class="link-group">
+                        <div class="link-group-title">Platform AR Runtimes</div>
+                        <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.xr.arcore@6.2/manual/index.html" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">ARCore XR Plug-in 6.2</span>
+                            <span class="link-desc">Unity plug-in bridging AR Foundation to Google ARCore on Android</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://developers.google.com/ar/develop" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">ARCore (Google)</span>
+                            <span class="link-desc">Google's AR platform SDK — used for Android builds</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.xr.arkit@4.2/manual/" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">ARKit XR Plug-in 4.2</span>
+                            <span class="link-desc">Unity plug-in bridging AR Foundation to Apple ARKit on iOS</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://developer.apple.com/documentation/arkit/" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">ARKit (Apple)</span>
+                            <span class="link-desc">Apple's AR platform SDK — used for iOS builds</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                    </div>
                 </div>
 
-                <!-- Languages -->
-                <h3 id="tools-languages">Programming Languages</h3>
-                <div class="link-group">
-                    <div class="link-group-title">Languages Used</div>
-                    <a class="link-item" href="https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">C#</span>
-                        <span class="link-desc">Unity scripting — game logic, AR session management, pathfinding</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://www.typescriptlang.org/docs/" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">TypeScript</span>
-                        <span class="link-desc">Backend map service &amp; this project website</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://www.swift.org/documentation/" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">Swift</span>
-                        <span class="link-desc">Native iOS integration and platform-specific extensions</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://kotlinlang.org/docs/home.html" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">Kotlin</span>
-                        <span class="link-desc">Native Android integration and platform-specific extensions</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">HTML / CSS</span>
-                        <span class="link-desc">This project website</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
+                <div class="doc-subsection" id="tools-languages">
+                    <h3>Programming Languages</h3>
+                    <div class="link-group">
+                        <div class="link-group-title">Languages Used</div>
+                        <a class="link-item" href="https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">C#</span>
+                            <span class="link-desc">Unity scripting — game logic, AR session management, pathfinding</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://www.typescriptlang.org/docs/" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">TypeScript</span>
+                            <span class="link-desc">Backend map service &amp; this project website</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://www.swift.org/documentation/" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">Swift</span>
+                            <span class="link-desc">Native iOS integration and platform-specific extensions</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://kotlinlang.org/docs/home.html" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">Kotlin</span>
+                            <span class="link-desc">Native Android integration and platform-specific extensions</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">HTML / CSS</span>
+                            <span class="link-desc">This project website</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                    </div>
                 </div>
 
-                <!-- Data Formats -->
-                <h3 id="tools-data">Data Formats &amp; Tooling</h3>
-                <div class="link-group">
-                    <div class="link-group-title">Formats &amp; Supporting Tools</div>
-                    <a class="link-item" href="https://www.json.org/json-en.html" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">JSON</span>
-                        <span class="link-desc">Floor-plan and POI data format exchanged between the backend and app</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://yaml.org/" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">YAML</span>
-                        <span class="link-desc">Configuration and build pipeline definitions</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">Bash</span>
-                        <span class="link-desc">Build scripts and CI automation</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">CSS</span>
-                        <span class="link-desc">Website styling with custom token-based theming</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
+                <div class="doc-subsection" id="tools-data">
+                    <h3>Data Formats &amp; Tooling</h3>
+                    <div class="link-group">
+                        <div class="link-group-title">Formats &amp; Supporting Tools</div>
+                        <a class="link-item" href="https://www.json.org/json-en.html" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">JSON</span>
+                            <span class="link-desc">Floor-plan and POI data format exchanged between the backend and app</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://yaml.org/" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">YAML</span>
+                            <span class="link-desc">Configuration and build pipeline definitions</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">Bash</span>
+                            <span class="link-desc">Build scripts and CI automation</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">CSS</span>
+                            <span class="link-desc">Website styling with custom token-based theming</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                    </div>
                 </div>
-            </div>
+            </section>
 
             <!-- Repository -->
-            <div class="doc-section" id="repo">
+            <section class="doc-section" id="repo">
                 <h2>Repository</h2>
                 <p>
                     The full source code — Unity project, backend service, and website — is hosted on GitHub.
@@ -444,13 +536,57 @@
                 <a class="btn" href="https://github.com/jacobhallburns/FITARNA" target="_blank" rel="noopener noreferrer">
                     View on GitHub ↗
                 </a>
-            </div>
-
+            </section>
         </main>
     </div>
 
     <script type="module" src="/src/theme.ts"></script>
     <script type="module" src="/src/navbar.ts"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const sectionIds = [
+            'overview',
+            'architecture',
+            'tools-unity',
+            'tools-ar',
+            'tools-languages',
+            'tools-data',
+            'repo'
+        ];
+
+        const links = Array.from(document.querySelectorAll('[data-section-link]'));
+        const sections = sectionIds
+            .map(id => document.getElementById(id))
+            .filter(Boolean);
+
+        function setActive(id) {
+            links.forEach(link => {
+                link.classList.toggle('active', link.dataset.sectionLink === id);
+            });
+        }
+
+        if (sections.length) {
+            const observer = new IntersectionObserver((entries) => {
+                const visible = entries
+                    .filter(entry => entry.isIntersecting)
+                    .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+                if (visible.length > 0) {
+                    setActive(visible[0].target.id);
+                }
+            }, {
+                root: null,
+                rootMargin: '-20% 0px -55% 0px',
+                threshold: [0.15, 0.3, 0.5, 0.7]
+            });
+
+            sections.forEach(section => observer.observe(section));
+
+            setActive(sectionIds[0]);
+        }
+    });
+    </script>
 
     <noscript>
     <div style="padding:12px; text-align:center; background:#fee; border-top:1px solid #fbb;">

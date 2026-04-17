@@ -51,7 +51,7 @@
         }
 
         .section {
-            max-width: 960px;
+            max-width: 1200px;
             margin: 0 auto 64px;
             padding: 0 16px;
         }
@@ -66,8 +66,20 @@
         /* Team grid */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: 1fr;
             gap: 24px;
+        }
+
+        @media (min-width: 700px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .team-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
         .member-card {
             background: var(--surface);
@@ -226,45 +238,45 @@
 
             <!-- ── TEAM MEMBER 1 ── Replace initials, name, role, bio, and links -->
             <div class="member-card">
+                <div class="member-avatar">VB</div>
+                <p class="member-name">Vincenzo Barager</p>
+                <p class="member-role">Role / Specialty</p>
+                <p class="member-bio">Placeholder bio — describe your focus area, skills, or what you're working on in the project.</p>
+                <div class="member-links">
+                    <a href="https://github.com/Dvizee" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+            </div>
+
+            <!-- ── TEAM MEMBER 2 ── Replace initials, name, role, bio, and links -->
+            <div class="member-card">
+                <div class="member-avatar">DD</div>
+                <p class="member-name">Dathan Dixon</p>
+                <p class="member-role">Role / Specialty</p>
+                <p class="member-bio">Placeholder bio — describe your focus area, skills, or what you're working on in the project.</p>
+                <div class="member-links">
+                    <a href="https://github.com/DathanD" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+            </div>
+
+            <!-- ── TEAM MEMBER 3 ── Replace initials, name, role, bio, and links -->
+            <div class="member-card">
                 <div class="member-avatar">JH</div>
-                <p class="member-name">Jacob Hall Burns</p>
-                <p class="member-role">Team Lead / Web Development</p>
+                <p class="member-name">Jacob Hall-Burns</p>
+                <p class="member-role">Team Lead / Web Development / Navigation</p>
                 <p class="member-bio">Placeholder bio — describe your focus area, skills, or what you're working on in the project.</p>
                 <div class="member-links">
                     <a href="https://github.com/jacobhallburns" target="_blank" rel="noopener noreferrer">GitHub</a>
                 </div>
             </div>
 
-            <!-- ── TEAM MEMBER 2 ── Replace initials, name, role, bio, and links -->
-            <div class="member-card">
-                <div class="member-avatar">??</div>
-                <p class="member-name">Team Member Name</p>
-                <p class="member-role">Role / Specialty</p>
-                <p class="member-bio">Placeholder bio — describe your focus area, skills, or what you're working on in the project.</p>
-                <div class="member-links">
-                    <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
-                </div>
-            </div>
-
-            <!-- ── TEAM MEMBER 3 ── Replace initials, name, role, bio, and links -->
-            <div class="member-card">
-                <div class="member-avatar">??</div>
-                <p class="member-name">Team Member Name</p>
-                <p class="member-role">Role / Specialty</p>
-                <p class="member-bio">Placeholder bio — describe your focus area, skills, or what you're working on in the project.</p>
-                <div class="member-links">
-                    <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
-                </div>
-            </div>
-
             <!-- ── TEAM MEMBER 4 ── Replace initials, name, role, bio, and links (duplicate block for more members) -->
             <div class="member-card">
-                <div class="member-avatar">??</div>
-                <p class="member-name">Team Member Name</p>
+                <div class="member-avatar">EW</div>
+                <p class="member-name">Ethan Wadley</p>
                 <p class="member-role">Role / Specialty</p>
                 <p class="member-bio">Placeholder bio — describe your focus area, skills, or what you're working on in the project.</p>
                 <div class="member-links">
-                    <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://github.com/JoeysMemeTeam" target="_blank" rel="noopener noreferrer">GitHub</a>
                 </div>
             </div>
 
@@ -274,6 +286,14 @@
     <!-- Faculty Advisor -->
     <div class="section">
         <h2 class="section-title">Faculty Advisor</h2>
+        <div class="advisor-card">
+            <div class="advisor-avatar">Dr</div>
+            <div class="advisor-info">
+                <h3>Dr. Ribeiro</h3>
+                <p class="advisor-title">Faculty Advisor — Florida Institute of Technology</p>
+                <p>Placeholder — add a short description of Dr. Ribeiro's role, department, research interests, or how they are guiding the project.</p>
+            </div>
+        </div>
         <div class="advisor-card">
             <div class="advisor-avatar">Dr</div>
             <div class="advisor-info">
