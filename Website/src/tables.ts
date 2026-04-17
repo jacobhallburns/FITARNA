@@ -94,7 +94,7 @@ const secondSemester: MilestoneRow[] = [
   {
     title: "Milestone 6 (Apr 20)",
     links: [
-      { label: "Poster", href: "/FITARNA/documentation/SHOWCASE_SPRING2026_POSTER_CAPSTONE_CS_FITARNA_FINAL.pptx", external: true},
+      { label: "Poster", href: "/FITARNA/documentation/SHOWCASE_SPRING2026_POSTER_CAPSTONE_CS_FITARNA_FINAL.pdf", external: true},
       { label: "User and/or Developer Manual", href: "/FITARNA/documentation/", external: true },
       { label: "Demo Video", href: "/FITARNA/documentation/", external: true },
       { label: "Presentation", href: "/FITARNA/documentation/", external: true },
