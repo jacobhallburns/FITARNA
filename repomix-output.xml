@@ -964,6 +964,7 @@ Website/
       FIT-AR-Navigation-App-(FITARNA)-Presentation.pdf
       FITARNA_Plan_(Spring)_Presentation.pdf
       FITARNA_Project_Plan_Fall_2026.pdf
+      FITARNA_User_Manual.pdf
       FITARNA-Project-Plan-Fall-2025.pdf
       Milestone 2 Grade Sheet copy.pdf
       Milestone_1_Evaluation_1.pdf
@@ -976,7 +977,10 @@ Website/
       Milestone_4_Presentation.pdf
       Milestone_5_Evaluation.pdf
       Milestone_5_Presentation.pdf
+      Milestone_6_Evaluation.pdf
+      Milestone_6_Presentation.pdf
       Requirements_Document_FITARNA.pdf
+      SHOWCASE_SPRING2026_POSTER_CAPSTONE_CS_FITARNA_FINAL.pdf
       SHOWCASE_SPRING2026_POSTER_CAPSTONE_CS_FITARNA.pptx.pdf
       Software_Test_Document_FITARNA.pdf
   src/
@@ -220391,477 +220395,6 @@ MonoBehaviour:
 </html>
 </file>
 
-<file path="Website/webpages/documentation.html">
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>Documentation — FITARNA</title>
-    <meta name="description" content="Technical documentation for the FITARNA indoor AR navigation project." />
-
-    <!-- Prevent theme flash + default first visit to LIGHT -->
-    <script>
-    (function () {
-        var t = localStorage.getItem('site-theme');
-        if (t !== 'light' && t !== 'dark') { t = 'light'; try { localStorage.setItem('site-theme', t); } catch {} }
-        if (t === 'dark') document.documentElement.classList.add('dark');
-        document.documentElement.setAttribute('data-theme', t);
-    })();
-    </script>
-
-    <link rel="stylesheet" href="../assets/css/theme-tokens.css">
-    <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/navbar.css">
-
-    <style>
-        .page-hero {
-            max-width: 800px;
-            margin: 60px auto 48px;
-            padding: 0 16px;
-            text-align: center;
-        }
-        .page-hero h1 {
-            font-size: 2.6rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin: 0 0 16px;
-            letter-spacing: -0.5px;
-        }
-        .page-hero .subtitle {
-            font-size: 1.15rem;
-            color: var(--muted);
-            max-width: 580px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-        .divider {
-            width: 60px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 2px;
-            margin: 24px auto;
-        }
-
-        /* Layout: sidebar + content */
-        .doc-layout {
-            max-width: 1100px;
-            margin: 0 auto 80px;
-            padding: 0 16px;
-            display: grid;
-            grid-template-columns: 220px 1fr;
-            gap: 40px;
-            align-items: start;
-        }
-        @media (max-width: 700px) {
-            .doc-layout { grid-template-columns: 1fr; }
-            .doc-nav { display: none; }
-        }
-
-        /* Sticky sidebar nav */
-        .doc-nav {
-            position: sticky;
-            top: 80px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 1rem;
-            box-shadow: var(--shadow);
-        }
-        .doc-nav p {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--muted);
-            margin: 0 0 10px 4px;
-        }
-        .doc-nav a {
-            display: block;
-            padding: 7px 10px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 500;
-            transition: background 0.15s;
-        }
-        .doc-nav a:hover { background: color-mix(in oklab, var(--accent) 14%, transparent); }
-        .doc-nav .nav-sub {
-            padding-left: 18px;
-            font-size: 0.85rem;
-            color: var(--muted);
-        }
-
-        /* Content sections */
-        .doc-section {
-            margin-bottom: 56px;
-        }
-        .doc-section h2 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--primary);
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 10px;
-            margin: 0 0 20px;
-        }
-        .doc-section h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text);
-            margin: 28px 0 10px;
-        }
-        .doc-section p {
-            font-size: 0.97rem;
-            line-height: 1.75;
-            color: var(--text);
-            margin: 0 0 14px;
-        }
-
-        /* Arch diagram */
-        .arch-box {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 1.4rem 1.6rem;
-            box-shadow: var(--shadow);
-            font-family: monospace;
-            font-size: 0.88rem;
-            line-height: 1.9;
-            color: var(--text);
-            overflow-x: auto;
-        }
-        .arch-box .layer-label {
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        /* Link list cards */
-        .link-group {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            margin-bottom: 24px;
-        }
-        .link-group-title {
-            background: color-mix(in oklab, var(--accent) 14%, transparent);
-            border-bottom: 1px solid var(--border);
-            padding: 10px 16px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: var(--text);
-        }
-        .link-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 11px 16px;
-            border-bottom: 1px solid var(--border);
-            text-decoration: none;
-            color: var(--text);
-            transition: background 0.12s;
-        }
-        .link-item:last-child { border-bottom: 0; }
-        .link-item:hover { background: color-mix(in oklab, var(--accent) 10%, transparent); }
-        .link-item .link-label {
-            font-size: 0.92rem;
-            font-weight: 500;
-            color: var(--primary);
-            flex: 1;
-        }
-        .link-item .link-desc {
-            font-size: 0.82rem;
-            color: var(--muted);
-        }
-        .ext-icon {
-            font-size: 0.75rem;
-            color: var(--muted);
-            flex-shrink: 0;
-        }
-
-        /* Inline code */
-        code {
-            background: color-mix(in oklab, var(--accent) 18%, transparent);
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            padding: 2px 6px;
-            font-size: 0.88em;
-            font-family: 'Cascadia Code', 'Fira Code', monospace;
-        }
-
-        .badge-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 12px;
-        }
-    </style>
-</head>
-<body>
-    <div id="site-header"></div>
-
-    <!-- Hero -->
-    <div class="page-hero">
-        <h1>Documentation</h1>
-        <div class="divider"></div>
-        <p class="subtitle">
-            Technical reference for the FITARNA Indoor AR Navigation project — architecture, tools, and external resources.
-        </p>
-    </div>
-
-    <div class="doc-layout">
-
-        <!-- Sidebar nav -->
-        <nav class="doc-nav" aria-label="Documentation sections">
-            <p>On this page</p>
-            <a href="#overview">Project Overview</a>
-            <a href="#architecture">Architecture</a>
-            <a href="#tools-unity" class="nav-sub">Unity</a>
-            <a href="#tools-ar" class="nav-sub">AR SDKs</a>
-            <a href="#tools-languages" class="nav-sub">Languages</a>
-            <a href="#tools-data" class="nav-sub">Data Formats</a>
-            <a href="#repo">Repository</a>
-        </nav>
-
-        <!-- Main content -->
-        <main>
-
-            <!-- Overview -->
-            <div class="doc-section" id="overview">
-                <h2>Project Overview</h2>
-                <p>
-                    FITARNA (<strong>F</strong>lorida <strong>I</strong>nstitute of <strong>T</strong>echnology
-                    <strong>AR</strong> <strong>NA</strong>vigation) is a cross-platform mobile AR application
-                    that provides real-time, turn-by-turn indoor navigation using the smartphone camera.
-                </p>
-                <p>
-                    The app renders directional waypoints as 3D AR overlays anchored to real-world coordinates,
-                    guiding users through building interiors without requiring any dedicated hardware beyond a
-                    modern iOS or Android device.
-                </p>
-                <div class="badge-row">
-                    <span class="badge">Unity 2022 LTS</span>
-                    <span class="badge">AR Foundation 6.x</span>
-                    <span class="badge">iOS + Android</span>
-                    <span class="badge">C# / TypeScript</span>
-                </div>
-            </div>
-
-            <!-- Architecture -->
-            <div class="doc-section" id="architecture">
-                <h2>Architecture</h2>
-                <p>The system is divided into three layers that communicate at well-defined interfaces:</p>
-
-                <div class="arch-box">
-<span class="layer-label">[ Mobile App — Unity / C# ]</span>
-  AR camera feed  →  plane detection  →  localization
-  pathfinding  →  3D waypoint rendering (URP)
-  UI (TextMesh Pro)  →  input handling
-
-<span class="layer-label">[ Backend — TypeScript ]</span>
-  REST API  →  floor-plan JSON  →  POI registry
-  serves building map data to the app at runtime
-
-<span class="layer-label">[ Platform AR Runtimes ]</span>
-  iOS  :  ARKit  (via Unity ARKit XR Plug-in)
-  Android  :  ARCore  (via Unity ARCore XR Plug-in)
-                </div>
-
-                <h3>Key Components</h3>
-                <p>
-                    <strong>AR Session</strong> — managed by AR Foundation's <code>ARSession</code> and
-                    <code>ARSessionOrigin</code> components, which abstract over ARKit/ARCore and provide
-                    a unified world coordinate space.
-                </p>
-                <p>
-                    <strong>Pathfinder</strong> — takes a destination POI and the user's current world position,
-                    queries the floor-plan graph, and returns an ordered list of 3D waypoints.
-                </p>
-                <p>
-                    <strong>Waypoint Renderer</strong> — uses Unity's <code>LineRenderer</code> and instanced
-                    meshes to draw the navigation path in the AR scene, styled via the Universal Render Pipeline.
-                </p>
-                <p>
-                    <strong>Map Service</strong> — a lightweight TypeScript backend that stores building floor
-                    plans as JSON and exposes them via HTTP so the app can load the correct map on demand.
-                </p>
-            </div>
-
-            <!-- Tools: Unity -->
-            <div class="doc-section" id="tools-unity">
-                <h2>Tools &amp; Technologies</h2>
-                <h3 id="tools-unity">Unity</h3>
-
-                <div class="link-group">
-                    <div class="link-group-title">Unity Core</div>
-                    <a class="link-item" href="https://docs.unity.com/en-us" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">Unity Documentation</span>
-                        <span class="link-desc">Official Unity Manual &amp; Scripting API</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@6.2/manual/index.html" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">AR Foundation 6.2</span>
-                        <span class="link-desc">Cross-platform AR framework used for plane detection &amp; session management</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.xr.management@4.5/manual/index.html" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">XR Plug-in Management 4.5</span>
-                        <span class="link-desc">Manages loading and lifecycle of XR provider plug-ins</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://unity.com/features/srp/universal-render-pipeline" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">Universal Render Pipeline (URP)</span>
-                        <span class="link-desc">Render pipeline used for AR overlay shaders and visual effects</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.inputsystem@1.14/manual/index.html" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">Input System 1.14</span>
-                        <span class="link-desc">Handles touch input and device-specific gesture detection</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.ugui@2.0/manual/TextMeshPro/index.html" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">TextMesh Pro</span>
-                        <span class="link-desc">High-quality text rendering used for in-AR labels and UI</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://docs.unity3d.com/ScriptReference/LineRenderer.html" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">Line Renderer</span>
-                        <span class="link-desc">Renders the navigation path as a 3D line through the AR environment</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.localization@1.0/manual/index.html" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">Localization Package</span>
-                        <span class="link-desc">Internationalization support for UI strings</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://docs.unity3d.com/540/Documentation/Manual/UnityWebRequest.html" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">Unity Web Request</span>
-                        <span class="link-desc">Used to fetch floor-plan data from the TypeScript backend at runtime</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                </div>
-
-                <!-- AR SDKs -->
-                <h3 id="tools-ar">AR SDKs</h3>
-                <div class="link-group">
-                    <div class="link-group-title">Platform AR Runtimes</div>
-                    <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.xr.arcore@6.2/manual/index.html" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">ARCore XR Plug-in 6.2</span>
-                        <span class="link-desc">Unity plug-in bridging AR Foundation to Google ARCore on Android</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://developers.google.com/ar/develop" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">ARCore (Google)</span>
-                        <span class="link-desc">Google's AR platform SDK — used for Android builds</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.xr.arkit@4.2/manual/" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">ARKit XR Plug-in 4.2</span>
-                        <span class="link-desc">Unity plug-in bridging AR Foundation to Apple ARKit on iOS</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://developer.apple.com/documentation/arkit/" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">ARKit (Apple)</span>
-                        <span class="link-desc">Apple's AR platform SDK — used for iOS builds</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                </div>
-
-                <!-- Languages -->
-                <h3 id="tools-languages">Programming Languages</h3>
-                <div class="link-group">
-                    <div class="link-group-title">Languages Used</div>
-                    <a class="link-item" href="https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">C#</span>
-                        <span class="link-desc">Unity scripting — game logic, AR session management, pathfinding</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://www.typescriptlang.org/docs/" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">TypeScript</span>
-                        <span class="link-desc">Backend map service &amp; this project website</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://www.swift.org/documentation/" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">Swift</span>
-                        <span class="link-desc">Native iOS integration and platform-specific extensions</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://kotlinlang.org/docs/home.html" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">Kotlin</span>
-                        <span class="link-desc">Native Android integration and platform-specific extensions</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">HTML / CSS</span>
-                        <span class="link-desc">This project website</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                </div>
-
-                <!-- Data Formats -->
-                <h3 id="tools-data">Data Formats &amp; Tooling</h3>
-                <div class="link-group">
-                    <div class="link-group-title">Formats &amp; Supporting Tools</div>
-                    <a class="link-item" href="https://www.json.org/json-en.html" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">JSON</span>
-                        <span class="link-desc">Floor-plan and POI data format exchanged between the backend and app</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://yaml.org/" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">YAML</span>
-                        <span class="link-desc">Configuration and build pipeline definitions</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">Bash</span>
-                        <span class="link-desc">Build scripts and CI automation</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                    <a class="link-item" href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener noreferrer">
-                        <span class="link-label">CSS</span>
-                        <span class="link-desc">Website styling with custom token-based theming</span>
-                        <span class="ext-icon">↗</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Repository -->
-            <div class="doc-section" id="repo">
-                <h2>Repository</h2>
-                <p>
-                    The full source code — Unity project, backend service, and website — is hosted on GitHub.
-                    Issues, pull requests, and the project board are all managed there.
-                </p>
-                <a class="btn" href="https://github.com/jacobhallburns/FITARNA" target="_blank" rel="noopener noreferrer">
-                    View on GitHub ↗
-                </a>
-            </div>
-
-        </main>
-    </div>
-
-    <script type="module" src="/src/theme.ts"></script>
-    <script type="module" src="/src/navbar.ts"></script>
-
-    <noscript>
-    <div style="padding:12px; text-align:center; background:#fee; border-top:1px solid #fbb;">
-        This site works best with JavaScript enabled (for theme + navigation).
-    </div>
-    </noscript>
-</body>
-<footer>
-    <p>&copy; 2025 FITARNA Senior Design Team. All rights reserved.</p>
-    <p>
-        <a href="https://github.com/jacobhallburns/FITARNA" target="_blank" rel="noopener noreferrer" class="menu-link">GitHub</a>
-        <a href="/FITARNA/webpages/documentation.html" class="menu-link">Documentation</a>
-    </p>
-</footer>
-</html>
-</file>
-
 <file path="Website/webpages/html_blueprint.html">
 <!doctype html>
 <html lang="en">
@@ -220909,270 +220442,6 @@ MonoBehaviour:
     </div>
     </noscript>
 </body>
-</html>
-</file>
-
-<file path="Website/webpages/mission.html">
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>Mission — FITARNA</title>
-    <meta name="description" content="The mission and goals of the FITARNA Indoor AR Navigation project." />
-
-    <!-- Prevent theme flash + default first visit to LIGHT -->
-    <script>
-    (function () {
-        var t = localStorage.getItem('site-theme');
-        if (t !== 'light' && t !== 'dark') { t = 'light'; try { localStorage.setItem('site-theme', t); } catch {} }
-        if (t === 'dark') document.documentElement.classList.add('dark');
-        document.documentElement.setAttribute('data-theme', t);
-    })();
-    </script>
-
-    <link rel="stylesheet" href="../assets/css/theme-tokens.css">
-    <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/navbar.css">
-
-    <style>
-        .page-hero {
-            max-width: 800px;
-            margin: 60px auto 48px;
-            padding: 0 16px;
-            text-align: center;
-        }
-        .page-hero h1 {
-            font-size: 2.6rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin: 0 0 16px;
-            letter-spacing: -0.5px;
-        }
-        .page-hero .subtitle {
-            font-size: 1.2rem;
-            color: var(--muted);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-        .divider {
-            width: 60px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 2px;
-            margin: 24px auto;
-        }
-
-        .section {
-            max-width: 900px;
-            margin: 0 auto 60px;
-            padding: 0 16px;
-        }
-        .section h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 0 0 20px;
-        }
-
-        .mission-statement {
-            background: var(--surface);
-            border: 2px solid var(--accent);
-            border-radius: 16px;
-            padding: 2rem 2.5rem;
-            box-shadow: var(--shadow);
-            text-align: center;
-            max-width: 780px;
-            margin: 0 auto 60px;
-        }
-        .mission-statement blockquote {
-            margin: 0;
-            font-size: 1.25rem;
-            line-height: 1.75;
-            color: var(--text);
-            font-style: italic;
-        }
-        .mission-statement cite {
-            display: block;
-            margin-top: 16px;
-            font-size: 0.9rem;
-            color: var(--muted);
-            font-style: normal;
-        }
-
-        .goal-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-        }
-        .goal-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 1.4rem 1.2rem;
-            box-shadow: var(--shadow);
-        }
-        .goal-card .goal-icon {
-            font-size: 1.8rem;
-            margin-bottom: 12px;
-        }
-        .goal-card h3 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            margin: 0 0 8px;
-            color: var(--text);
-        }
-        .goal-card p {
-            margin: 0;
-            font-size: 0.92rem;
-            color: var(--muted);
-            line-height: 1.6;
-        }
-
-        .problem-body {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 1.6rem 1.8rem;
-            box-shadow: var(--shadow);
-            font-size: 1rem;
-            line-height: 1.75;
-            color: var(--text);
-        }
-        .problem-body p { margin: 0 0 14px; }
-        .problem-body p:last-child { margin-bottom: 0; }
-
-        .badge-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 16px;
-        }
-    </style>
-</head>
-<body>
-    <div id="site-header"></div>
-
-    <!-- Hero -->
-    <div class="page-hero">
-        <h1>Our Mission</h1>
-        <div class="divider"></div>
-        <p class="subtitle">
-            Bringing augmented reality navigation indoors — making every building as easy to navigate as an open map.
-        </p>
-    </div>
-
-    <!-- Mission Statement -->
-    <div style="max-width:900px; margin:0 auto; padding:0 16px 0;">
-        <div class="mission-statement">
-            <blockquote>
-                "To develop an accessible, real-time augmented reality indoor navigation system that empowers students,
-                faculty, and visitors at Florida Tech to find their way through complex indoor environments
-                with confidence and ease."
-            </blockquote>
-            <cite>— FITARNA Senior Design Team, Florida Institute of Technology</cite>
-        </div>
-    </div>
-
-    <!-- Problem Statement -->
-    <div class="section">
-        <h2>The Problem</h2>
-        <div class="problem-body">
-            <p>
-                GPS technology has transformed outdoor navigation, but it fails entirely the moment you step inside
-                a building. Multi-story academic buildings, labs, and event centers can be genuinely disorienting —
-                especially for new students, guests, or anyone with accessibility needs.
-            </p>
-            <p>
-                Traditional solutions like printed maps and static directory boards are easy to miss, hard to update,
-                and provide no turn-by-turn guidance. FITARNA addresses this gap by using the camera already in
-                every smartphone to overlay live navigation cues directly onto the real world.
-            </p>
-        </div>
-    </div>
-
-    <!-- Goals -->
-    <div class="section">
-        <h2>Project Goals</h2>
-        <div class="goal-grid">
-            <div class="goal-card">
-                <div class="goal-icon">📍</div>
-                <h3>Real-Time Positioning</h3>
-                <p>Use AR Foundation and on-device sensors to accurately determine a user's location and orientation within a mapped building.</p>
-            </div>
-            <div class="goal-card">
-                <div class="goal-icon">🗺️</div>
-                <h3>Turn-by-Turn Guidance</h3>
-                <p>Overlay directional waypoints and route highlights onto the camera feed, guiding users to any room or point of interest.</p>
-            </div>
-            <div class="goal-card">
-                <div class="goal-icon">📱</div>
-                <h3>Cross-Platform Support</h3>
-                <p>Deliver a seamless experience on both iOS (ARKit) and Android (ARCore) devices through a shared Unity codebase.</p>
-            </div>
-            <div class="goal-card">
-                <div class="goal-icon">♿</div>
-                <h3>Accessibility First</h3>
-                <p>Design navigation paths and UI elements with accessibility in mind, supporting users of all abilities.</p>
-            </div>
-            <div class="goal-card">
-                <div class="goal-icon">⚡</div>
-                <h3>Low-Latency Experience</h3>
-                <p>Ensure AR overlays remain stable and responsive even in challenging lighting conditions typical of indoor spaces.</p>
-            </div>
-            <div class="goal-card">
-                <div class="goal-icon">🏫</div>
-                <h3>Campus Integration</h3>
-                <p>Map Florida Tech buildings with accurate floor plans so the system can be deployed and extended to new buildings over time.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Technology -->
-    <div class="section">
-        <h2>How We Get There</h2>
-        <div class="problem-body">
-            <p>
-                FITARNA is built on Unity's AR Foundation framework, which provides a unified abstraction layer over
-                ARCore (Android) and ARKit (iOS). This lets the team write shared C# logic while still leveraging
-                each platform's native AR capabilities.
-            </p>
-            <p>
-                Floor-plan data is served via a TypeScript backend, which the app queries at runtime to load the
-                correct map for the building being navigated. A pathfinding layer computes the optimal route and
-                converts it into a series of 3D waypoints that are anchored to real-world coordinates and rendered
-                as AR overlays.
-            </p>
-            <div class="badge-row">
-                <span class="badge">Unity</span>
-                <span class="badge">AR Foundation</span>
-                <span class="badge">ARCore</span>
-                <span class="badge">ARKit</span>
-                <span class="badge">C#</span>
-                <span class="badge">TypeScript</span>
-                <span class="badge">URP</span>
-            </div>
-        </div>
-    </div>
-
-    <script type="module" src="/src/theme.ts"></script>
-    <script type="module" src="/src/navbar.ts"></script>
-
-    <noscript>
-    <div style="padding:12px; text-align:center; background:#fee; border-top:1px solid #fbb;">
-        This site works best with JavaScript enabled (for theme + navigation).
-    </div>
-    </noscript>
-</body>
-<footer>
-    <p>&copy; 2025 FITARNA Senior Design Team. All rights reserved.</p>
-    <p>
-        <a href="https://github.com/jacobhallburns/FITARNA" target="_blank" rel="noopener noreferrer" class="menu-link">GitHub</a>
-        <a href="/FITARNA/webpages/documentation.html" class="menu-link">Documentation</a>
-    </p>
-</footer>
 </html>
 </file>
 
@@ -222706,15 +221975,15 @@ footer {
 }
 </file>
 
-<file path="Website/webpages/about_us.html">
+<file path="Website/webpages/mission.html">
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>About Us — FITARNA</title>
-    <meta name="description" content="Meet the FITARNA senior design team at Florida Institute of Technology." />
+    <title>Mission — FITARNA</title>
+    <meta name="description" content="The mission and goals of the FITARNA Indoor AR Navigation project." />
 
     <!-- Prevent theme flash + default first visit to LIGHT -->
     <script>
@@ -222745,9 +222014,9 @@ footer {
             letter-spacing: -0.5px;
         }
         .page-hero .subtitle {
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             color: var(--muted);
-            max-width: 580px;
+            max-width: 600px;
             margin: 0 auto;
             line-height: 1.7;
         }
@@ -222760,158 +222029,89 @@ footer {
         }
 
         .section {
-            max-width: 960px;
-            margin: 0 auto 64px;
+            max-width: 900px;
+            margin: 0 auto 60px;
             padding: 0 16px;
         }
-        .section-title {
-            font-size: 1.4rem;
+        .section h2 {
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
-            margin: 0 0 24px;
-            text-align: center;
+            margin: 0 0 20px;
         }
 
-        /* Team grid */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 24px;
-        }
-        .member-card {
+        .mission-statement {
             background: var(--surface);
-            border: 1px solid var(--border);
+            border: 2px solid var(--accent);
             border-radius: 16px;
-            padding: 1.6rem 1.2rem 1.4rem;
+            padding: 2rem 2.5rem;
             box-shadow: var(--shadow);
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
+            max-width: 780px;
+            margin: 0 auto 60px;
         }
-        .member-avatar {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            background: color-mix(in oklab, var(--accent) 30%, var(--surface));
-            border: 2px solid var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 4px;
-            flex-shrink: 0;
-        }
-        .member-name {
-            font-size: 1.05rem;
-            font-weight: 700;
+        .mission-statement blockquote {
+            margin: 0;
+            font-size: 1.25rem;
+            line-height: 1.75;
             color: var(--text);
-            margin: 0;
+            font-style: italic;
         }
-        .member-role {
-            font-size: 0.85rem;
-            color: var(--primary);
-            font-weight: 600;
-            margin: 0;
-        }
-        .member-bio {
-            font-size: 0.88rem;
-            color: var(--muted);
-            line-height: 1.6;
-            margin: 4px 0 0;
-        }
-        .member-links {
-            display: flex;
-            gap: 10px;
-            margin-top: 8px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .member-links a {
-            font-size: 0.82rem;
-            color: var(--primary);
-            text-decoration: underline;
-        }
-
-        /* Advisor card */
-        .advisor-card {
-            background: var(--surface);
-            border: 2px solid var(--accent);
-            border-radius: 16px;
-            padding: 1.8rem 2rem;
-            box-shadow: var(--shadow);
-            display: flex;
-            gap: 24px;
-            align-items: flex-start;
-            max-width: 680px;
-            margin: 0 auto;
-        }
-        .advisor-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: color-mix(in oklab, var(--accent) 30%, var(--surface));
-            border: 2px solid var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            flex-shrink: 0;
-        }
-        .advisor-info h3 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            margin: 0 0 4px;
-        }
-        .advisor-info .advisor-title {
+        .mission-statement cite {
+            display: block;
+            margin-top: 16px;
             font-size: 0.9rem;
-            color: var(--primary);
-            font-weight: 600;
-            margin: 0 0 10px;
-        }
-        .advisor-info p {
-            font-size: 0.92rem;
             color: var(--muted);
-            margin: 0;
-            line-height: 1.65;
+            font-style: normal;
         }
 
-        /* University card */
-        .uni-card {
+        .goal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .goal-card {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 14px;
-            padding: 2rem;
+            padding: 1.4rem 1.2rem;
             box-shadow: var(--shadow);
-            text-align: center;
         }
-        .uni-card h3 {
-            font-size: 1.25rem;
+        .goal-card .goal-icon {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+        .goal-card h3 {
+            font-size: 1.05rem;
             font-weight: 700;
-            color: var(--primary);
             margin: 0 0 8px;
+            color: var(--text);
         }
-        .uni-card p {
-            font-size: 0.95rem;
-            color: var(--muted);
+        .goal-card p {
             margin: 0;
-            line-height: 1.65;
+            font-size: 0.92rem;
+            color: var(--muted);
+            line-height: 1.6;
         }
+
+        .problem-body {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.6rem 1.8rem;
+            box-shadow: var(--shadow);
+            font-size: 1rem;
+            line-height: 1.75;
+            color: var(--text);
+        }
+        .problem-body p { margin: 0 0 14px; }
+        .problem-body p:last-child { margin-bottom: 0; }
+
         .badge-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
+            gap: 10px;
             margin-top: 16px;
-        }
-
-        @media (max-width: 560px) {
-            .advisor-card { flex-direction: column; align-items: center; text-align: center; }
         }
     </style>
 </head>
@@ -222920,94 +222120,102 @@ footer {
 
     <!-- Hero -->
     <div class="page-hero">
-        <h1>About Us</h1>
+        <h1>Our Mission</h1>
         <div class="divider"></div>
         <p class="subtitle">
-            We are a senior design team at the Florida Institute of Technology building an indoor AR navigation
-            app from the ground up.
+            Bringing augmented reality navigation indoors — making every building as easy to navigate as an open map.
         </p>
     </div>
 
-    <!-- Team Members -->
-    <div class="section">
-        <h2 class="section-title">Meet the Team</h2>
-        <div class="team-grid">
-
-            <!-- ── TEAM MEMBER 1 ── Replace initials, name, role, bio, and links -->
-            <div class="member-card">
-                <div class="member-avatar">JH</div>
-                <p class="member-name">Jacob Hall Burns</p>
-                <p class="member-role">Team Lead / Web Development</p>
-                <p class="member-bio">Placeholder bio — describe your focus area, skills, or what you're working on in the project.</p>
-                <div class="member-links">
-                    <a href="https://github.com/jacobhallburns" target="_blank" rel="noopener noreferrer">GitHub</a>
-                </div>
-            </div>
-
-            <!-- ── TEAM MEMBER 2 ── Replace initials, name, role, bio, and links -->
-            <div class="member-card">
-                <div class="member-avatar">??</div>
-                <p class="member-name">Team Member Name</p>
-                <p class="member-role">Role / Specialty</p>
-                <p class="member-bio">Placeholder bio — describe your focus area, skills, or what you're working on in the project.</p>
-                <div class="member-links">
-                    <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
-                </div>
-            </div>
-
-            <!-- ── TEAM MEMBER 3 ── Replace initials, name, role, bio, and links -->
-            <div class="member-card">
-                <div class="member-avatar">??</div>
-                <p class="member-name">Team Member Name</p>
-                <p class="member-role">Role / Specialty</p>
-                <p class="member-bio">Placeholder bio — describe your focus area, skills, or what you're working on in the project.</p>
-                <div class="member-links">
-                    <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
-                </div>
-            </div>
-
-            <!-- ── TEAM MEMBER 4 ── Replace initials, name, role, bio, and links (duplicate block for more members) -->
-            <div class="member-card">
-                <div class="member-avatar">??</div>
-                <p class="member-name">Team Member Name</p>
-                <p class="member-role">Role / Specialty</p>
-                <p class="member-bio">Placeholder bio — describe your focus area, skills, or what you're working on in the project.</p>
-                <div class="member-links">
-                    <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
-                </div>
-            </div>
-
+    <!-- Mission Statement -->
+    <div style="max-width:900px; margin:0 auto; padding:0 16px 0;">
+        <div class="mission-statement">
+            <blockquote>
+                "To develop an accessible, real-time augmented reality indoor navigation system that empowers students,
+                faculty, and visitors at Florida Tech to find their way through complex indoor environments
+                with confidence and ease."
+            </blockquote>
+            <cite>— FITARNA Senior Design Team, Florida Institute of Technology</cite>
         </div>
     </div>
 
-    <!-- Faculty Advisor -->
+    <!-- Problem Statement -->
     <div class="section">
-        <h2 class="section-title">Faculty Advisor</h2>
-        <div class="advisor-card">
-            <div class="advisor-avatar">Dr</div>
-            <div class="advisor-info">
-                <h3>Dr. Chan</h3>
-                <p class="advisor-title">Faculty Advisor — Florida Institute of Technology</p>
-                <p>Placeholder — add a short description of Dr. Chan's role, department, research interests, or how they are guiding the project.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- About the Program -->
-    <div class="section">
-        <h2 class="section-title">About the Program</h2>
-        <div class="uni-card">
-            <h3>Florida Institute of Technology — Senior Design</h3>
+        <h2>The Problem</h2>
+        <div class="problem-body">
             <p>
-                FITARNA is a two-semester senior capstone project in the Computer Science / Software Engineering
-                program at Florida Tech. The project challenges students to take a real-world problem from
-                requirements through design, implementation, and final presentation.
+                GPS technology has transformed outdoor navigation, but it fails entirely the moment you step inside
+                a building. Multi-story academic buildings, labs, and event centers can be genuinely disorienting —
+                especially for new students, guests, or anyone with accessibility needs.
+            </p>
+            <p>
+                Traditional solutions like printed maps and static directory boards are easy to miss, hard to update,
+                and provide no turn-by-turn guidance. FITARNA addresses this gap by using the camera already in
+                every smartphone to overlay live navigation cues directly onto the real world.
+            </p>
+        </div>
+    </div>
+
+    <!-- Goals -->
+    <div class="section">
+        <h2>Project Goals</h2>
+        <div class="goal-grid">
+            <div class="goal-card">
+                <div class="goal-icon">📍</div>
+                <h3>Real-Time Positioning</h3>
+                <p>Use AR Foundation and on-device sensors to accurately determine a user's location and orientation within a mapped building.</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-icon">🗺️</div>
+                <h3>Turn-by-Turn Guidance</h3>
+                <p>Overlay directional waypoints and route highlights onto the camera feed, guiding users to any room or point of interest.</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-icon">📱</div>
+                <h3>Cross-Platform Support</h3>
+                <p>Deliver a seamless experience on both iOS (ARKit) and Android (ARCore) devices through a shared Unity codebase.</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-icon">♿</div>
+                <h3>Accessibility First</h3>
+                <p>Design navigation paths and UI elements with accessibility in mind, supporting users of all abilities.</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-icon">⚡</div>
+                <h3>Low-Latency Experience</h3>
+                <p>Ensure AR overlays remain stable and responsive even in challenging lighting conditions typical of indoor spaces.</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-icon">🏫</div>
+                <h3>Campus Integration</h3>
+                <p>Map Florida Tech buildings with accurate floor plans so the system can be deployed and extended to new buildings over time.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Technology -->
+    <div class="section">
+        <h2>How We Get There</h2>
+        <div class="problem-body">
+            <p>
+                FITARNA is built on Unity's AR Foundation framework, which provides a unified abstraction layer over
+                ARCore (Android) and ARKit (iOS). This lets the team write shared C# logic while still leveraging
+                each platform's native AR capabilities.
+            </p>
+            <p>
+                Floor-plan data is served via a TypeScript backend, which the app queries at runtime to load the
+                correct map for the building being navigated. A pathfinding layer computes the optimal route and
+                converts it into a series of 3D waypoints that are anchored to real-world coordinates and rendered
+                as AR overlays.
             </p>
             <div class="badge-row">
-                <span class="badge">Florida Institute of Technology</span>
-                <span class="badge">Senior Capstone</span>
-                <span class="badge">2024 – 2025</span>
-                <span class="badge">AR / Mobile</span>
+                <span class="badge">Unity</span>
+                <span class="badge">AR Foundation</span>
+                <span class="badge">ARCore</span>
+                <span class="badge">ARKit</span>
+                <span class="badge">C#</span>
+                <span class="badge">TypeScript</span>
+                <span class="badge">URP</span>
             </div>
         </div>
     </div>
@@ -223114,6 +222322,950 @@ html.dark .theme-toggle .moon { display: inline; }
 }
 </file>
 
+<file path="Website/webpages/documentation.html">
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Documentation — FITARNA</title>
+    <meta name="description" content="Technical documentation for the FITARNA indoor AR navigation project." />
+
+    <!-- Prevent theme flash + default first visit to LIGHT -->
+    <script>
+    (function () {
+        var t = localStorage.getItem('site-theme');
+        if (t !== 'light' && t !== 'dark') {
+            t = 'light';
+            try { localStorage.setItem('site-theme', t); } catch {}
+        }
+        if (t === 'dark') document.documentElement.classList.add('dark');
+        document.documentElement.setAttribute('data-theme', t);
+    })();
+    </script>
+
+    <link rel="stylesheet" href="../assets/css/theme-tokens.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+
+    <style>
+        :root {
+            --doc-sticky-offset: 72px;
+        }
+
+        .page-hero {
+            max-width: 900px;
+            margin: 60px auto 40px;
+            padding: 0 16px;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 0 0 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .page-hero .subtitle {
+            font-size: 1.15rem;
+            color: var(--muted);
+            max-width: 640px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .divider {
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+            margin: 24px auto;
+        }
+
+        /* Sticky top section nav */
+        .doc-top-nav-wrap {
+            position: sticky;
+            top: 86px;
+            z-index: 30;
+            width: 100%;
+            padding: 0 16px;
+            margin: 0 0 36px;
+        }
+
+        .doc-top-nav {
+            max-width: 820px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 12px 16px;
+            background: color-mix(in oklab, var(--surface) 96%, transparent);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            scrollbar-width: thin;
+        }
+
+        .doc-top-nav-label {
+            flex: 0 0 auto;
+        }
+
+        .doc-top-nav a {
+            flex: 0 0 auto;
+        }
+
+    
+
+        .doc-top-nav a:hover {
+            background: color-mix(in oklab, var(--accent) 12%, transparent);
+        }
+
+        .doc-top-nav a.active {
+            color: var(--primary);
+            background: color-mix(in oklab, var(--accent) 18%, transparent);
+            box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--accent) 35%, var(--border));
+        }
+
+        /* Center the page content */
+        .doc-layout {
+            max-width: 900px;
+            margin: 0 auto 80px;
+            padding: 0 16px;
+        }
+
+        main {
+            width: 100%;
+        }
+
+        /* Sections */
+        .doc-section {
+            margin-bottom: 56px;
+            scroll-margin-top: 155px;
+        }
+
+        .doc-subsection {
+            scroll-margin-top: 155px;
+        }
+
+        .doc-section h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+            margin: 0 0 20px;
+            text-align: left;
+        }
+
+        .doc-section h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 28px 0 10px;
+            text-align: left;
+        }
+
+        .doc-section p {
+            font-size: 0.97rem;
+            line-height: 1.75;
+            color: var(--text);
+            margin: 0 0 14px;
+            text-align: left;
+        }
+
+        /* Arch diagram */
+        .arch-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.4rem 1.6rem;
+            box-shadow: var(--shadow);
+            font-family: monospace;
+            font-size: 0.88rem;
+            line-height: 1.9;
+            color: var(--text);
+            overflow-x: auto;
+        }
+        .arch-box .layer-label {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Link list cards */
+        .link-group {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 24px;
+        }
+        .link-group-title {
+            background: color-mix(in oklab, var(--accent) 14%, transparent);
+            border-bottom: 1px solid var(--border);
+            padding: 10px 16px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+        .link-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 11px 16px;
+            border-bottom: 1px solid var(--border);
+            text-decoration: none;
+            color: var(--text);
+            transition: background 0.12s;
+        }
+
+        .link-item:last-child {
+            border-bottom: 0;
+        }
+
+        .link-item:hover {
+            background: color-mix(in oklab, var(--accent) 10%, transparent);
+        }
+
+        .link-item .link-label {
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--primary);
+            flex: 1;
+        }
+        .link-item .link-desc {
+            font-size: 0.82rem;
+            color: var(--muted);
+        }
+        .ext-icon {
+            font-size: 0.75rem;
+            color: var(--muted);
+            flex-shrink: 0;
+        }
+
+        /* Inline code */
+        code {
+            background: color-mix(in oklab, var(--accent) 18%, transparent);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-size: 0.88em;
+            font-family: 'Cascadia Code', 'Fira Code', monospace;
+        }
+
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+            justify-content: flex-start;
+        }
+
+        @media (max-width: 760px) {
+            :root {
+                --doc-sticky-offset: 68px;
+            }
+
+            .page-hero {
+                margin-top: 42px;
+                margin-bottom: 28px;
+            }
+
+            .page-hero h1 {
+                font-size: 2.15rem;
+            }
+
+            .doc-top-nav-wrap {
+                margin-bottom: 28px;
+            }
+
+            .doc-top-nav {
+                padding: 10px;
+                border-radius: 14px;
+            }
+
+            .doc-top-nav a {
+                font-size: 0.88rem;
+                padding: 8px 12px;
+            }
+
+            .doc-section {
+                scroll-margin-top: 145px;
+            }
+
+            .doc-subsection {
+                scroll-margin-top: 145px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <!-- Hero -->
+    <div class="page-hero">
+        <h1>Documentation</h1>
+        <div class="divider"></div>
+        <p class="subtitle">
+            Technical reference for the FITARNA Indoor AR Navigation project — architecture, tools, and external resources.
+        </p>
+    </div>
+
+    <!-- Sticky top nav -->
+    <div class="doc-top-nav-wrap">
+        <nav class="doc-top-nav" aria-label="Documentation sections">
+            <span class="doc-top-nav-label">On this page</span>
+            <a href="#overview" data-section-link="overview">Overview</a>
+            <a href="#architecture" data-section-link="architecture">Architecture</a>
+            <a href="#tools-unity" data-section-link="tools-unity">Unity</a>
+            <a href="#tools-ar" data-section-link="tools-ar">AR SDKs</a>
+            <a href="#tools-languages" data-section-link="tools-languages">Languages</a>
+            <a href="#tools-data" data-section-link="tools-data">Data Formats</a>
+            <a href="#repo" data-section-link="repo">Repository</a>
+        </nav>
+    </div>
+
+    <div class="doc-layout">
+        <main>
+            <!-- Overview -->
+            <section class="doc-section" id="overview">
+                <h2>Project Overview</h2>
+                <p>
+                    FITARNA (<strong>F</strong>lorida <strong>I</strong>nstitute of <strong>T</strong>echnology
+                    <strong>AR</strong> <strong>NA</strong>vigation) is a cross-platform mobile AR application
+                    that provides real-time, turn-by-turn indoor navigation using the smartphone camera.
+                </p>
+                <p>
+                    The app renders directional waypoints as 3D AR overlays anchored to real-world coordinates,
+                    guiding users through building interiors without requiring any dedicated hardware beyond a
+                    modern iOS or Android device.
+                </p>
+                <div class="badge-row">
+                    <span class="badge">Unity 2022 LTS</span>
+                    <span class="badge">AR Foundation 6.x</span>
+                    <span class="badge">iOS + Android</span>
+                    <span class="badge">C# / TypeScript</span>
+                </div>
+            </section>
+
+            <!-- Architecture -->
+            <section class="doc-section" id="architecture">
+                <h2>Architecture</h2>
+                <p>The system is divided into three layers that communicate at well-defined interfaces:</p>
+
+                <div class="arch-box">
+<span class="layer-label">[ Mobile App — Unity / C# ]</span>
+  AR camera feed  →  plane detection  →  localization
+  pathfinding  →  3D waypoint rendering (URP)
+  UI (TextMesh Pro)  →  input handling
+
+<span class="layer-label">[ Backend — TypeScript ]</span>
+  REST API  →  floor-plan JSON  →  POI registry
+  serves building map data to the app at runtime
+
+<span class="layer-label">[ Platform AR Runtimes ]</span>
+  iOS  :  ARKit  (via Unity ARKit XR Plug-in)
+  Android  :  ARCore  (via Unity ARCore XR Plug-in)
+                </div>
+
+                <h3>Key Components</h3>
+                <p>
+                    <strong>AR Session</strong> — managed by AR Foundation's <code>ARSession</code> and
+                    <code>ARSessionOrigin</code> components, which abstract over ARKit/ARCore and provide
+                    a unified world coordinate space.
+                </p>
+                <p>
+                    <strong>Pathfinder</strong> — takes a destination POI and the user's current world position,
+                    queries the floor-plan graph, and returns an ordered list of 3D waypoints.
+                </p>
+                <p>
+                    <strong>Waypoint Renderer</strong> — uses Unity's <code>LineRenderer</code> and instanced
+                    meshes to draw the navigation path in the AR scene, styled via the Universal Render Pipeline.
+                </p>
+                <p>
+                    <strong>Map Service</strong> — a lightweight TypeScript backend that stores building floor
+                    plans as JSON and exposes them via HTTP so the app can load the correct map on demand.
+                </p>
+            </section>
+
+            <!-- Tools -->
+            <section class="doc-section" id="tools">
+                <h2>Tools &amp; Technologies</h2>
+
+                <div class="doc-subsection" id="tools-unity">
+                    <h3>Unity</h3>
+
+                    <div class="link-group">
+                        <div class="link-group-title">Unity Core</div>
+                        <a class="link-item" href="https://docs.unity.com/en-us" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">Unity Documentation</span>
+                            <span class="link-desc">Official Unity Manual &amp; Scripting API</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@6.2/manual/index.html" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">AR Foundation 6.2</span>
+                            <span class="link-desc">Cross-platform AR framework used for plane detection &amp; session management</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.xr.management@4.5/manual/index.html" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">XR Plug-in Management 4.5</span>
+                            <span class="link-desc">Manages loading and lifecycle of XR provider plug-ins</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://unity.com/features/srp/universal-render-pipeline" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">Universal Render Pipeline (URP)</span>
+                            <span class="link-desc">Render pipeline used for AR overlay shaders and visual effects</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.inputsystem@1.14/manual/index.html" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">Input System 1.14</span>
+                            <span class="link-desc">Handles touch input and device-specific gesture detection</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.ugui@2.0/manual/TextMeshPro/index.html" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">TextMesh Pro</span>
+                            <span class="link-desc">High-quality text rendering used for in-AR labels and UI</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://docs.unity3d.com/ScriptReference/LineRenderer.html" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">Line Renderer</span>
+                            <span class="link-desc">Renders the navigation path as a 3D line through the AR environment</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.localization@1.0/manual/index.html" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">Localization Package</span>
+                            <span class="link-desc">Internationalization support for UI strings</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://docs.unity3d.com/540/Documentation/Manual/UnityWebRequest.html" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">Unity Web Request</span>
+                            <span class="link-desc">Used to fetch floor-plan data from the TypeScript backend at runtime</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="doc-subsection" id="tools-ar">
+                    <h3>AR SDKs</h3>
+                    <div class="link-group">
+                        <div class="link-group-title">Platform AR Runtimes</div>
+                        <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.xr.arcore@6.2/manual/index.html" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">ARCore XR Plug-in 6.2</span>
+                            <span class="link-desc">Unity plug-in bridging AR Foundation to Google ARCore on Android</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://developers.google.com/ar/develop" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">ARCore (Google)</span>
+                            <span class="link-desc">Google's AR platform SDK — used for Android builds</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://docs.unity3d.com/Packages/com.unity.xr.arkit@4.2/manual/" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">ARKit XR Plug-in 4.2</span>
+                            <span class="link-desc">Unity plug-in bridging AR Foundation to Apple ARKit on iOS</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://developer.apple.com/documentation/arkit/" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">ARKit (Apple)</span>
+                            <span class="link-desc">Apple's AR platform SDK — used for iOS builds</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="doc-subsection" id="tools-languages">
+                    <h3>Programming Languages</h3>
+                    <div class="link-group">
+                        <div class="link-group-title">Languages Used</div>
+                        <a class="link-item" href="https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">C#</span>
+                            <span class="link-desc">Unity scripting — game logic, AR session management, pathfinding</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://www.typescriptlang.org/docs/" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">TypeScript</span>
+                            <span class="link-desc">Backend map service &amp; this project website</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://www.swift.org/documentation/" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">Swift</span>
+                            <span class="link-desc">Native iOS integration and platform-specific extensions</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://kotlinlang.org/docs/home.html" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">Kotlin</span>
+                            <span class="link-desc">Native Android integration and platform-specific extensions</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">HTML / CSS</span>
+                            <span class="link-desc">This project website</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="doc-subsection" id="tools-data">
+                    <h3>Data Formats &amp; Tooling</h3>
+                    <div class="link-group">
+                        <div class="link-group-title">Formats &amp; Supporting Tools</div>
+                        <a class="link-item" href="https://www.json.org/json-en.html" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">JSON</span>
+                            <span class="link-desc">Floor-plan and POI data format exchanged between the backend and app</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://yaml.org/" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">YAML</span>
+                            <span class="link-desc">Configuration and build pipeline definitions</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">Bash</span>
+                            <span class="link-desc">Build scripts and CI automation</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                        <a class="link-item" href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">CSS</span>
+                            <span class="link-desc">Website styling with custom token-based theming</span>
+                            <span class="ext-icon">↗</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Repository -->
+            <section class="doc-section" id="repo">
+                <h2>Repository</h2>
+                <p>
+                    The full source code — Unity project, backend service, and website — is hosted on GitHub.
+                    Issues, pull requests, and the project board are all managed there.
+                </p>
+                <a class="btn" href="https://github.com/jacobhallburns/FITARNA" target="_blank" rel="noopener noreferrer">
+                    View on GitHub ↗
+                </a>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="/src/theme.ts"></script>
+    <script type="module" src="/src/navbar.ts"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const sectionIds = [
+            'overview',
+            'architecture',
+            'tools-unity',
+            'tools-ar',
+            'tools-languages',
+            'tools-data',
+            'repo'
+        ];
+
+        const links = Array.from(document.querySelectorAll('[data-section-link]'));
+        const sections = sectionIds
+            .map(id => document.getElementById(id))
+            .filter(Boolean);
+
+        function setActive(id) {
+            links.forEach(link => {
+                link.classList.toggle('active', link.dataset.sectionLink === id);
+            });
+        }
+
+        if (sections.length) {
+            const observer = new IntersectionObserver((entries) => {
+                const visible = entries
+                    .filter(entry => entry.isIntersecting)
+                    .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+                if (visible.length > 0) {
+                    setActive(visible[0].target.id);
+                }
+            }, {
+                root: null,
+                rootMargin: '-20% 0px -55% 0px',
+                threshold: [0.15, 0.3, 0.5, 0.7]
+            });
+
+            sections.forEach(section => observer.observe(section));
+
+            setActive(sectionIds[0]);
+        }
+    });
+    </script>
+
+    <noscript>
+    <div style="padding:12px; text-align:center; background:#fee; border-top:1px solid #fbb;">
+        This site works best with JavaScript enabled (for theme + navigation).
+    </div>
+    </noscript>
+</body>
+<footer>
+    <p>&copy; 2025 FITARNA Senior Design Team. All rights reserved.</p>
+    <p>
+        <a href="https://github.com/jacobhallburns/FITARNA" target="_blank" rel="noopener noreferrer" class="menu-link">GitHub</a>
+        <a href="/FITARNA/webpages/documentation.html" class="menu-link">Documentation</a>
+    </p>
+</footer>
+</html>
+</file>
+
+<file path="Website/webpages/about_us.html">
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>About Us — FITARNA</title>
+    <meta name="description" content="Meet the FITARNA senior design team at Florida Institute of Technology." />
+
+    <!-- Prevent theme flash + default first visit to LIGHT -->
+    <script>
+    (function () {
+        var t = localStorage.getItem('site-theme');
+        if (t !== 'light' && t !== 'dark') { t = 'light'; try { localStorage.setItem('site-theme', t); } catch {} }
+        if (t === 'dark') document.documentElement.classList.add('dark');
+        document.documentElement.setAttribute('data-theme', t);
+    })();
+    </script>
+
+    <link rel="stylesheet" href="../assets/css/theme-tokens.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+
+    <style>
+        .page-hero {
+            max-width: 800px;
+            margin: 60px auto 48px;
+            padding: 0 16px;
+            text-align: center;
+        }
+        .page-hero h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 0 0 16px;
+            letter-spacing: -0.5px;
+        }
+        .page-hero .subtitle {
+            font-size: 1.15rem;
+            color: var(--muted);
+            max-width: 580px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        .divider {
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+            margin: 24px auto;
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 0 auto 64px;
+            padding: 0 16px;
+        }
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0 0 24px;
+            text-align: center;
+        }
+
+        /* Team grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media (min-width: 700px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .team-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        .member-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.6rem 1.2rem 1.4rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .member-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: color-mix(in oklab, var(--accent) 30%, var(--surface));
+            border: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+            flex-shrink: 0;
+        }
+        .member-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 0;
+        }
+        .member-role {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin: 0;
+        }
+        .member-bio {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.6;
+            margin: 4px 0 0;
+        }
+        .member-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .member-links a {
+            font-size: 0.82rem;
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        /* Advisor card */
+        .advisor-card {
+            background: var(--surface);
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            padding: 1.8rem 2rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .advisor-card + .advisor-card {
+            margin-top: 24px;
+        }
+        .advisor-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: color-mix(in oklab, var(--accent) 30%, var(--surface));
+            border: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+        .advisor-info h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 0 0 4px;
+        }
+        .advisor-info .advisor-title {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin: 0 0 10px;
+        }
+        .advisor-info p {
+            font-size: 0.92rem;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.65;
+        }
+
+        /* University card */
+        .uni-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        .uni-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0 0 8px;
+        }
+        .uni-card p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.65;
+        }
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 16px;
+        }
+
+        @media (max-width: 560px) {
+            .advisor-card { flex-direction: column; align-items: center; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <!-- Hero -->
+    <div class="page-hero">
+        <h1>About Us</h1>
+        <div class="divider"></div>
+        <p class="subtitle">
+            We are a senior design team at the Florida Institute of Technology building an indoor AR navigation
+            app from the ground up.
+        </p>
+    </div>
+
+    <!-- Team Members -->
+    <div class="section">
+        <h2 class="section-title">Meet the Team</h2>
+        <div class="team-grid">
+
+            <!-- ── TEAM MEMBER 1 ── Replace initials, name, role, bio, and links -->
+            <div class="member-card">
+                <div class="member-avatar">VB</div>
+                <p class="member-name">Vincenzo Barager</p>
+                <p class="member-role">Role / Specialty</p>
+                <p class="member-bio">Placeholder bio — describe your focus area, skills, or what you're working on in the project.</p>
+                <div class="member-links">
+                    <a href="https://github.com/Dvizee" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+            </div>
+
+            <!-- ── TEAM MEMBER 2 ── Replace initials, name, role, bio, and links -->
+            <div class="member-card">
+                <div class="member-avatar">DD</div>
+                <p class="member-name">Dathan Dixon</p>
+                <p class="member-role">Role / Specialty</p>
+                <p class="member-bio">Placeholder bio — describe your focus area, skills, or what you're working on in the project.</p>
+                <div class="member-links">
+                    <a href="https://github.com/DathanD" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+            </div>
+
+            <!-- ── TEAM MEMBER 3 ── Replace initials, name, role, bio, and links -->
+            <div class="member-card">
+                <div class="member-avatar">JH</div>
+                <p class="member-name">Jacob Hall-Burns</p>
+                <p class="member-role">Team Lead / Web Development / Navigation</p>
+                <p class="member-bio">Placeholder bio — describe your focus area, skills, or what you're working on in the project.</p>
+                <div class="member-links">
+                    <a href="https://github.com/jacobhallburns" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+            </div>
+
+            <!-- ── TEAM MEMBER 4 ── Replace initials, name, role, bio, and links (duplicate block for more members) -->
+            <div class="member-card">
+                <div class="member-avatar">EW</div>
+                <p class="member-name">Ethan Wadley</p>
+                <p class="member-role">Role / Specialty</p>
+                <p class="member-bio">Placeholder bio — describe your focus area, skills, or what you're working on in the project.</p>
+                <div class="member-links">
+                    <a href="https://github.com/JoeysMemeTeam" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Faculty Advisor -->
+    <div class="section">
+        <h2 class="section-title">Faculty Advisor</h2>
+        <div class="advisor-card">
+            <div class="advisor-avatar">Dr</div>
+            <div class="advisor-info">
+                <h3>Dr. Ribeiro</h3>
+                <p class="advisor-title">Faculty Advisor — Florida Institute of Technology</p>
+                <p>Placeholder — add a short description of Dr. Ribeiro's role, department, research interests, or how they are guiding the project.</p>
+            </div>
+        </div>
+        <div class="advisor-card">
+            <div class="advisor-avatar">Dr</div>
+            <div class="advisor-info">
+                <h3>Dr. Chan</h3>
+                <p class="advisor-title">Faculty Advisor — Florida Institute of Technology</p>
+                <p>Placeholder — add a short description of Dr. Chan's role, department, research interests, or how they are guiding the project.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- About the Program -->
+    <div class="section">
+        <h2 class="section-title">About the Program</h2>
+        <div class="uni-card">
+            <h3>Florida Institute of Technology — Senior Design</h3>
+            <p>
+                FITARNA is a two-semester senior capstone project in the Computer Science / Software Engineering
+                program at Florida Tech. The project challenges students to take a real-world problem from
+                requirements through design, implementation, and final presentation.
+            </p>
+            <div class="badge-row">
+                <span class="badge">Florida Institute of Technology</span>
+                <span class="badge">Senior Capstone</span>
+                <span class="badge">2024 – 2025</span>
+                <span class="badge">AR / Mobile</span>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/theme.ts"></script>
+    <script type="module" src="/src/navbar.ts"></script>
+
+    <noscript>
+    <div style="padding:12px; text-align:center; background:#fee; border-top:1px solid #fbb;">
+        This site works best with JavaScript enabled (for theme + navigation).
+    </div>
+    </noscript>
+</body>
+<footer>
+    <p>&copy; 2025 FITARNA Senior Design Team. All rights reserved.</p>
+    <p>
+        <a href="https://github.com/jacobhallburns/FITARNA" target="_blank" rel="noopener noreferrer" class="menu-link">GitHub</a>
+        <a href="/FITARNA/webpages/documentation.html" class="menu-link">Documentation</a>
+    </p>
+</footer>
+</html>
+</file>
+
 <file path="README.md">
 # FITARNA
 Indoor AR Navigation App <br>
@@ -223157,10 +223309,10 @@ import { getTheme, toggleTheme, onThemeChange, type Theme } from "./theme";
 type MenuItem = { label: string; href: string; external?: boolean};
 
 const MENU_ITEMS: MenuItem[] = [
-  { label: "Mission (In Progress)", href: "/FITARNA/webpages/mission.html" },
-  { label: "About Us (In Progress)", href: "/FITARNA/webpages/about_us.html" },
+  { label: "Mission", href: "/FITARNA/webpages/mission.html" },
+  { label: "About Us", href: "/FITARNA/webpages/about_us.html" },
   { label: "Github", href: "https://github.com/jacobhallburns/FITARNA", external: true },
-  { label: "Documentation (In Progress)", href: "/FITARNA/webpages/documentation.html" },
+  { label: "Documentation", href: "/FITARNA/webpages/documentation.html" },
   
 
 ];
@@ -223347,7 +223499,7 @@ if (document.readyState === "loading") {
     <p>&copy; 2025 FITARNA Senior Design Team. All rights reserved.</p>
     <p>
         <a href="https://github.com/jacobhallburns/FITARNA" target="_blank" rel="noopener noreferrer" class="menu-link">GitHub</a>
-        <a href="/FITARNA/webpages/documentation.html" class="menu-link">Documentation (In Progress)</a>
+        <a href="/FITARNA/webpages/documentation.html" class="menu-link">Documentation</a>
     </p>
 </footer>
 </html>
@@ -223450,10 +223602,11 @@ const secondSemester: MilestoneRow[] = [
   {
     title: "Milestone 6 (Apr 20)",
     links: [
-      { label: "User and/or Developer Manual", href: "/documentation/userManual.pdf", external: true },
-      { label: "Demo Video", href: "/documentation/demoVideo.jpg", external: true },
-      { label: "Presentation", href: "/documentation/milestone6.pdf", external: true },
-      { label: "Progress Evaluation", href: "/documentation/eval6.pdf", external: true },
+      { label: "Poster", href: "/FITARNA/documentation/SHOWCASE_SPRING2026_POSTER_CAPSTONE_CS_FITARNA_FINAL.pdf", external: true},
+      { label: "User and/or Developer Manual", href: "/FITARNA/documentation/FITARNA_User_Manual.pdf", external: true },
+      { label: "Demo Video", href: "/FITARNA/documentation/", external: true },
+      { label: "Presentation", href: "/FITARNA/documentation/Milestone_6_Presentation.pdf", external: true },
+      { label: "Progress Evaluation", href: "/FITARNA/documentation/Milestone_6_Evaluation.pdf", external: true },
     ],
   },
 ];
