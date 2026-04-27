@@ -101,6 +101,10 @@ const secondSemester: MilestoneRow[] = [
       { label: "Progress Evaluation", href: "/FITARNA/documentation/Milestone_6_Evaluation.pdf", external: true },
     ],
   },
+  {
+    title: "Demo Video",
+    [![Watch the video]](https://youtu.be/n-sTBPuUv7E)
+  },
 ];
 
 /* ---------- Render helpers ---------- */
