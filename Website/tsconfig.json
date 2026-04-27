@@ -12,8 +12,6 @@
     "skipLibCheck": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "types": [],
-    "baseUrl": ".",
-    "paths": {}
   },
   "include": ["src"]
 }
