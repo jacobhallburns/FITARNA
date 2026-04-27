@@ -97,7 +97,7 @@ const secondSemester: MilestoneRow[] = [
       { label: "Poster", href: "/FITARNA/documentation/SHOWCASE_SPRING2026_POSTER_CAPSTONE_CS_FITARNA_FINAL.pdf", external: true},
       { label: "User and/or Developer Manual", href: "/FITARNA/documentation/FITARNA_User_Manual.pdf", external: true },
       { label: "Demo Video", href: `${import.meta.env.BASE_URL}documentation/FITARNAdemo.mp4`, external: true },
-      { label: "Demo Video TEST", href: "/FITARNA/documentation/FITARNAdemo.mp4", external: true },
+      { label: "Demo Video TEST", href: "/FITARNA/Website/public/documentation/FITARNAdemo.mp4", external: true },
       { label: "Presentation", href: "/FITARNA/documentation/Milestone_6_Presentation.pdf", external: true },
       { label: "Progress Evaluation", href: "/FITARNA/documentation/Milestone_6_Evaluation.pdf", external: true },
     ],
