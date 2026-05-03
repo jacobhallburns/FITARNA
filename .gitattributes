@@ -12,3 +12,5 @@
 *.avi filter=lfs diff=lfs merge=lfs -text
 *.exr filter=lfs diff=lfs merge=lfs -text
 *.hdr filter=lfs diff=lfs merge=lfs -text
+
+Website/public/assets/images/* -filter -diff -merge text
